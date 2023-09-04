@@ -8,12 +8,14 @@
 
 .containerBotoes {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     margin-top: 43px;
     margin-bottom: 148px;
 }
 
-@media screen and (min-device-width: 500px) {
+@media screen and (min-device-width: 768px) {
     .formularioNovoVideo h1 {
         font-size: 3.75rem;
         margin: 50px 0 90px;
@@ -24,5 +26,9 @@
         gap: 40px;
         margin-top: 50px;
         margin-bottom: 169px;
+    }
+
+    .botaoCategoria {
+        margin: 0 0 0 auto;
     }
 }

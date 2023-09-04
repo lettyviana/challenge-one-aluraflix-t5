@@ -1,6 +1,7 @@
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import styles from "./FormularioNovoVideo.module.css";
+import { Link } from "react-router-dom";
 
 export const FormularioNovoVideo = () => {
     return (
@@ -71,9 +72,9 @@ export const FormularioNovoVideo = () => {
               <BotaoPadrao tipo="button" estilos="limpar">
                 Limpar
               </BotaoPadrao>
-              <BotaoPadrao tipo="button" estilos="nova-categoria">
+              <Link className={styles.botaoCategoria} to={'/nova-categoria'}><BotaoPadrao tipo="button" estilos="nova-categoria">
                 Nova Categoria
-              </BotaoPadrao>
+              </BotaoPadrao></Link>
             </div>
           </form>
         </Container>

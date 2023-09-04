@@ -24,7 +24,7 @@
 }
 
 .botaoPadrao.nova-categoria {
-    display: none;
+    width: 220px;
 }
 
 @media screen and (min-device-width: 600px) {
