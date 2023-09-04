@@ -1,0 +1,29 @@
+.cabecalho {
+    border-bottom: 2px solid var(--cor-primaria);
+    display: flex;
+    justify-content: center;
+    padding: 7px 0;
+}
+
+.cabecalho.inicio {
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+}
+
+.logotipo {
+    height: 25px;
+    width: 120px;
+}
+
+@media screen and (min-device-width: 420px) {
+    .cabecalho {
+        justify-content: space-between;
+        padding: 27px 24px;
+    }
+
+    .logotipo {
+        height: 40px;
+        width: 168px;
+    }
+}

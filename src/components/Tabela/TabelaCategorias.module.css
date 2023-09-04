@@ -1,0 +1,60 @@
+.containerTabela {
+    display: none;
+}
+
+@media screen and (min-device-width: 920px) {
+    .containerTabela {
+        display: block;
+        margin-bottom: 163px;
+        margin-top: 31px;
+        width: 100%;
+    }
+
+    .tabela {
+        border-collapse: collapse;
+        color: var(--cinza-3);
+        width: 100%;
+    }
+
+    .tabela th {
+        border: 4px solid var(--cor-primaria);
+        font-size: 2.1875rem;
+        font-weight: 400;
+        padding-left: 6px;
+        text-align: left;
+    }
+
+    .tabela th:last-child {
+        text-align: center;
+        width: 215px;
+    }
+
+    .tabela td {
+        font-size: 1.6875rem;
+        border: 2px solid var(--preto-1);
+        padding-left: 6px;
+        font-weight: 300;
+    }
+
+    .tabela td:last-child {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .botaoEditar, .botaoExcluir {
+        background-color: transparent;
+        border: none;
+        color: var(--cinza-3);
+        font-size: 1.6875rem;
+    }
+
+    .tabela tbody {
+        border-bottom: 4px solid var(--cor-primaria);
+        border-left: 4px solid var(--cor-primaria);
+        border-right: 4px solid var(--cor-primaria);
+    }
+
+    .tabela tr {
+        border: 3px solid var(--preto-1);
+    }
+}

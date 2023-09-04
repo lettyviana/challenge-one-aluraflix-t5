@@ -1,0 +1,26 @@
+.formularioNovaCategoria h1 {
+    color: var(--cinza-3);
+    font-size: 2.1875rem;
+    font-weight: 400;
+    margin: 20px 0 50px;
+    text-align: center;
+}
+
+.containerBotoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 43px;
+}
+
+@media screen and (min-device-width: 500px) {
+    .formularioNovaCategoria h1 {
+        font-size: 3.75rem;
+        margin: 50px 0 90px;
+    }
+
+    .containerBotoes {
+        justify-content: flex-start;
+        gap: 40px;
+        margin-top: 50px;
+    }
+}

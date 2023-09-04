@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Source+Sans+3:wght@600&display=swap');
+
+:root {
+  --fonte-principal: 'Roboto', sans-serif;
+  --fonte-secundaria: 'Source Sans 3', sans-serif;
+
+  --cor-primaria: #2a7ae4;
+
+  --categoria-1: #6BD1FF;
+  --categoria-2: #9CD33B;
+  --categoria-3: #69953B;
+  --categoria-4: #6B5BE2;
+  --categoria-5: #FFBA05;
+  --categoria-6: #FF8C2A;
+  --categoria-7: #DC6EBE;
+  --categoria-8: #9CD33B;
+
+  --preto-1: #000000E5;
+  --preto-2: #00000099;
+  --preto-3: #00000080;
+  --preto-4: #9E9E9E;
+
+  --branco: #FFFFFF;
+
+  --cinza-1: #C2C2C2;
+  --cinza-2: #E5E5E5;
+  --cinza-3: #F5F5F5;
+  --cinza-4: #53585D;
+
+  --erro-1: #C62828;
+  --erro-2: #E53935;
+  --erro-3: #FCE7E7;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--fonte-principal);
+  margin: 0;
+  padding: 0;
+}

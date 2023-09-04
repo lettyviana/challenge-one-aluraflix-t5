@@ -1,0 +1,139 @@
+{
+    "videos": [
+        {
+            "id": 1,
+            "titulo": "O que é React JS? #HipstersPontoTube",
+            "capa": "https://i.ytimg.com/vi/6IuQUgeDPg0/maxresdefault.jpg",
+            "link": "https://www.youtube.com/embed/6IuQUgeDPg0?si=WujO75za4zDxZi2M",
+            "categoria": "Front-End"
+        },
+        {
+            "id": 2,
+            "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
+            "capa": "https://i.ytimg.com/vi_webp/ZY3-MFxVdEw/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/ZY3-MFxVdEw?si=8CZZrt5sqkcOOnQz",
+            "categoria": "Front-End"
+        },
+        {
+            "id": 3,
+            "titulo": "Programei o Backend do Tinder para Developers (COM PUXÃO DE ORELHA NECESSÁRIO)",
+            "capa": "https://i.ytimg.com/vi_webp/AE214uRJ2UQ/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/AE214uRJ2UQ?si=4xVzXyU6qM-KNq4u",
+            "categoria": "Back-End"
+        },
+        {
+            "id": 4,
+            "titulo": "Xamarin.Forms 101: XAML Previewer",
+            "capa": "https://i.ytimg.com/vi_webp/lwnDxQQs2Eo/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/lwnDxQQs2Eo?si=iohxyD_hh7qtLyJD",
+            "categoria": "Mobile"
+        },
+        {
+            "id": 5,
+            "titulo": "Temas e cores no SwiftUI | #AluraMais",
+            "capa": "https://i.ytimg.com/vi_webp/uXA8jLSuPNA/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/lwnDxQQs2Eo?si=iohxyD_hh7qtLyJD",
+            "categoria": "Mobile"
+        },
+        {
+            "id": 6,
+            "titulo": "Desenvolvimento iOS pra iniciantes com Giovanna Moeller | #HipstersPontoTube",
+            "capa": "https://i.ytimg.com/vi/MGIs7DSQ-0A/maxresdefault.jpg",
+            "link": "https://www.youtube.com/embed/MGIs7DSQ-0A?si=eousTk1MWEudc0yP",
+            "categoria": "Mobile"
+        },
+        {
+            "id": 7,
+            "titulo": "3 aplicações de Machine Learning onde você nem imagina com Thiago Santos | #HipstersPontoTube",
+            "capa": "https://i.ytimg.com/vi/qYhixp5qxTc/maxresdefault.jpg",
+            "link": "https://www.youtube.com/embed/qYhixp5qxTc?si=K-aCAglCe48cvp1t",
+            "categoria": "Data Science"
+        },
+        {
+            "id": 8,
+            "titulo": "Data Science: por onde eu começo? | Universo Data Science #01",
+            "capa": "https://i.ytimg.com/vi/K-eaT4V8j-w/sddefault.jpg",
+            "link": "https://www.youtube.com/embed/K-eaT4V8j-w?si=TrwuBwmN1pVpjfNi",
+            "categoria": "Data Science"
+        },
+        {
+            "id": 9,
+            "titulo": "Será que a inteligência artificial será tão poderosa quanto os seres humanos? com Gui Silveira",
+            "capa": "https://i.ytimg.com/vi/Kk3vBRqKA2o/maxresdefault.jpg",
+            "link": "https://www.youtube.com/embed/Kk3vBRqKA2o?si=qRg3oZo_YLMvLe0r",
+            "categoria": "Data Science"
+        },
+        {
+            "id": 10,
+            "titulo": "useState: aprenda o React Hook neste TUTORIAL | #AluraMais",
+            "capa": "https://i.ytimg.com/vi_webp/KdQa4Rd6K1A/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/KdQa4Rd6K1A?si=xLSbWQM-67UBzzKB",
+            "categoria": "Front-End"
+        },
+        {
+            "id": 11,
+            "titulo": "O que é TRANSFORMAÇÃO DIGITAL? com Paulo Silveira | #HipstersPontoTube",
+            "capa": "https://i.ytimg.com/vi/Z-N5Fr9P-GU/maxresdefault.jpg",
+            "link": "https://www.youtube.com/embed/uXA8jLSuPNA?si=NZW3OCv3DHbZ3WDv",
+            "categoria": "Front-End"
+        }
+    ],
+    "categorias": [
+        {
+            "id": 1,
+            "nome": "Front-End",
+            "descricaoCategoria": "Formação Front-End da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando sobre Front-End",
+            "cor": "#6BD1FF"
+        },
+        {
+            "id": 2,
+            "nome": "Data Science",
+            "descricaoCategoria": "Formação em Data Science da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando sobre Data Science, incluindo R e Python",
+            "cor": "#9CD33B"
+        },
+        {
+            "id": 3,
+            "nome": "Mobile",
+            "descricaoCategoria": "Formação Mobile da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando sobre Mobile, incluindo React Native e Flutter",
+            "cor": "#69953B"
+        },
+        {
+            "id": 4,
+            "nome": "Infraestrutura",
+            "descricaoCategoria": "Formação em Infraestrutura da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando sobre Infraestrutura, incluindo Docker",
+            "cor": "#6B5BE2"
+        },
+        {
+            "id": 5,
+            "nome": "Back-End",
+            "descricaoCategoria": "Formação Back-End da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando sobre Back-End",
+            "cor": "#FFBA05"
+        },
+        {
+            "id": 6,
+            "nome": "Design & UX",
+            "descricaoCategoria": "Formação em Design & UX da Alura",
+            "descricaoTabela": "Ferramentas e técnicas que estudo sobre UX e Design",
+            "cor": "#FF8C2A"
+        },
+        {
+            "id": 7,
+            "nome": "Marketing Digital",
+            "descricaoCategoria": "Formação em Marketing Digital da Alura",
+            "descricaoTabela": "Conteúdo que estou estudando para vender e monetizar minhas ideias",
+            "cor": "#DC6EBE"
+        },
+        {
+            "id": 8,
+            "nome": "Inovação & Gestão",
+            "descricaoCategoria": "Formação em Inovação & Gestão da Alura",
+            "descricaoTabela": "Conteúdo sobre como manter o time feliz e muito mais motivado",
+            "cor": "#9CD33B"
+        }
+    ]
+}

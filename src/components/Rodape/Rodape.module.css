@@ -1,0 +1,50 @@
+.rodape {
+    align-items: center;
+    border-top: 2px solid var(--cor-primaria);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.rodape p {
+    color: var(--cinza-3);
+    font-size: 1.125rem;
+    font-weight: 300;
+    padding-bottom: 20px;
+}
+
+.logotipo {
+    height: 28.5px;
+    width: 120px;
+}
+
+.negrito {
+    font-weight: 700;
+}
+
+.destaque {
+    color: var(--cor-primaria);
+    font-weight: 700;
+}
+
+.rodape.inicio {
+    display: none;
+}
+
+@media screen and (min-device-width: 420px) {
+    .rodape {
+        padding-bottom: 60px;
+    }
+
+    .logotipo {
+        height: 60px;
+        width: 253px;
+    }
+
+    .rodape p {
+        display: none;
+    }
+}
