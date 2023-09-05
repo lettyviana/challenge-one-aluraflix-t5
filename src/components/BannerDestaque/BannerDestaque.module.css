@@ -1,0 +1,7 @@
+@media screen and (min-device-width: 678px) {
+    .bannerDestaque img {
+        height: 100%;
+        opacity: .59;
+        width: 100vw;
+    }
+}
