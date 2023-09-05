@@ -1,22 +1,12 @@
-import { CarrosselDestaque } from "../Carrossel";
+import { CarrosselDestaque } from "../CarrosselDestaque";
 import { BotaoPadrao } from "../BotaoPadrao";
 import dados from "../../data/video-data.json";
-import styles from "./Categoria.module.css";
+import styles from "./ConteudoDestaque.module.css";
 import { CardVideoInicio } from "../CardVideos";
-import { TituloCategoria } from "../TituloCategoria";
+import { TituloCategoriaDestaque } from "../TituloCategoriaDestaque";
 import { Link } from "react-router-dom";
 
-export const CategoriaPadrao = () => {
-  return (
-    <>
-      <section className={styles.categoriaPadraoContainer}>
-        {/* Renderizar componente Carrossel da categoria padrão */}
-      </section>
-    </>
-  );
-};
-
-export const CategoriaDestaque = () => {
+export const ConteudoDestaque = () => {
   const ultimoVideo = dados.videos[dados.videos.length - 1];
   const categoriaDoUltimoVideo = ultimoVideo.categoria;
   const categoriaUltimoVideo = dados.categorias.find(
@@ -42,7 +32,7 @@ export const CategoriaDestaque = () => {
               link={ultimoVideo.link}
               corCategoria={corCategoriaUltimoVideo}
             />
-            <TituloCategoria
+            <TituloCategoriaDestaque
               nomeCategoria={categoriaDoUltimoVideo}
               tituloVideo={ultimoVideo.titulo}
               descricao={categoriaUltimoVideo.descricaoCategoria}

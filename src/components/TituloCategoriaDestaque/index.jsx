@@ -1,7 +1,7 @@
-import styles from "./TituloCategoria.module.css";
+import styles from "./TituloCategoriaDestaque.module.css";
 import PropTypes from "prop-types";
 
-export const TituloCategoria = ({
+export const TituloCategoriaDestaque = ({
   nomeCategoria,
   tituloVideo,
   descricao,
@@ -20,7 +20,7 @@ export const TituloCategoria = ({
   );
 };
 
-TituloCategoria.propTypes = {
+TituloCategoriaDestaque.propTypes = {
   nomeCategoria: PropTypes.string,
   tituloVideo: PropTypes.string,
   descricao: PropTypes.string,

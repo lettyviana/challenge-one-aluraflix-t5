@@ -72,6 +72,13 @@
         },
         {
             "id": 11,
+            "titulo": "CAMINHOS PARA SER UM DEV FRONT-END EM 2023 (GUIA COMPLETO E ATUALIZADO)",
+            "capa": "https://i.ytimg.com/vi_webp/30nlBGjPRYM/maxresdefault.webp",
+            "link": "https://www.youtube.com/embed/30nlBGjPRYM?si=l3E0NW7mF943jJ2D",
+            "categoria": "Front-End"
+        },
+        {
+            "id": 12,
             "titulo": "O que é TRANSFORMAÇÃO DIGITAL? com Paulo Silveira | #HipstersPontoTube",
             "capa": "https://i.ytimg.com/vi/Z-N5Fr9P-GU/maxresdefault.jpg",
             "link": "https://www.youtube.com/embed/uXA8jLSuPNA?si=NZW3OCv3DHbZ3WDv",

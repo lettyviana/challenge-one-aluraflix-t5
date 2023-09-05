@@ -1,6 +1,6 @@
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import "./carrossel.css";
+import "./carrossel-destaque.css";
 import { CardVideos } from "../CardVideos";
 import dados from "../../data/video-data.json";
 
@@ -28,11 +28,9 @@ export const CarrosselDestaque = () => {
       "(min-width: 1200px)": {
         slides: { perView: 3 },
       },
-      "(min-width: 1920px)": {
-        slides: { perView: 4 },
-      },
     },
     slides: { perView: 1 },
+    mode: "free",
   });
 
   return (
@@ -50,3 +48,4 @@ export const CarrosselDestaque = () => {
     </div>
   );
 };
+

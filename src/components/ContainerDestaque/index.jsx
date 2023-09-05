@@ -1,5 +1,5 @@
 import { BannerDestaque } from "../BannerDestaque";
-import { CategoriaDestaque } from "../Categoria";
+import { ConteudoDestaque } from "../ConteudoDestaque";
 import styles from "./ContainerDestaque.module.css";
 
 export const ContainerDestaque = () => {
@@ -7,7 +7,7 @@ export const ContainerDestaque = () => {
     <>
       <div className={styles.containerDestaque}>
         <BannerDestaque />
-        <CategoriaDestaque />
+        <ConteudoDestaque />
       </div>
     </>
   );

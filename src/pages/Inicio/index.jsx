@@ -11,6 +11,7 @@ export function Inicio() {
         <Link to={'/novo-video'}> <BotaoPadrao estilos="novo-video">Novo vídeo</BotaoPadrao></Link>
       </Cabecalho>
       <Destaque/>
+      {/* Renderizar Carrossel Início */}
       <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao>
       <Rodape estilos="inicio" />
     </>
