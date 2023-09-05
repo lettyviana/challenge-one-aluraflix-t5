@@ -1,4 +1,4 @@
-import { CarrosselDestaque } from "../CarrosselDestaque";
+import { CarrosselDestaque } from "../Carrossel";
 import dados from "../../data/video-data.json";
 import styles from "./Categoria.module.css";
 import { CardVideos } from "../CardVideos";

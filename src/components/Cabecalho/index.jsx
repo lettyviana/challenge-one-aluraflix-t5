@@ -1,7 +1,7 @@
 import styles from "./Cabecalho.module.css";
 import logo from "../../public/logo.svg";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const Cabecalho = ({ children, estilos }) => {
   return (
