@@ -34,7 +34,7 @@
     display: none;
 }
 
-@media screen and (min-device-width: 420px) {
+@media screen and (min-device-width: 600px) {
     .rodape {
         padding-bottom: 60px;
     }

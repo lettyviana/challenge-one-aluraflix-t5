@@ -1,0 +1,24 @@
+.carrossel {
+    gap: 6px;
+    margin-left: 17px;
+}
+
+@media screen and (min-device-width: 600px) {
+    .carrossel {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-device-width: 920px) {
+    .carrossel {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (min-device-width: 1280px) {
+    .carrossel {
+        gap: 22px;
+        margin-left: 40px;
+        margin-top: -190px;
+    }
+}

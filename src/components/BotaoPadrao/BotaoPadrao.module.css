@@ -16,11 +16,24 @@
 }
 
 .botaoPadrao.novo-video {
+    display: none;
+}
+
+.botaoPadrao.novo-video-mobile {
     border-radius: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
+    height: 54px;
     width: 100%;
+}
+
+.botaoPadrao.video-inicio-mobile {
+    background-color: var(--cinza-3);
+    color: var(--preto-1);
+    display: block;
+    font-family: var(--fonte-primaria);
+    font-size: .8rem;
+    font-weight: 300;
+    margin: 0 auto;
+    width: 98px;
 }
 
 .botaoPadrao.nova-categoria {
@@ -42,6 +55,7 @@
         background-color: transparent;
         border: 1px solid var(--cinza-3);
         border-radius: 4px;
+        display: block;
         font-weight: 600;
         position: relative;
         width: 180px;
@@ -50,5 +64,16 @@
     .botaoPadrao.nova-categoria {
         display: block;
         margin: 0 0 0 auto;
+    }
+
+    
+    .botaoPadrao.novo-video-mobile {
+        display: none;
+    }
+}
+
+@media screen and (min-device-width: 600px) {
+    .botaoPadrao.video-inicio-mobile {
+        display: none;
     }
 }

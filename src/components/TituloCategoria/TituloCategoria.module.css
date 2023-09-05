@@ -1,0 +1,65 @@
+.tituloCategoria h2 {
+    border-radius: 2px;
+    font-size: .75rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+.tituloCategoria p {
+    font-size: .75rem;
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+
+.tituloCategoria h3 {
+    display: none;
+}
+
+@media screen and (min-device-width: 920px) {
+    .tituloCategoria h2 {
+        border-radius: 4px;
+        font-size: 1.75rem;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+    }
+
+    .tituloCategoria p {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 5px;
+    }
+
+    .tituloCategoria h3 {
+        display: none;
+    }
+}
+
+@media screen and (min-device-width: 1280px) {
+    .tituloCategoria {
+        display: flex;
+        flex-direction: column;
+        order: 3;
+        width: 100%;
+    }
+    
+    .tituloCategoria h2 {
+        font-size: 3.75rem;
+        margin-bottom: 40px;
+        order: -1;
+    }
+
+    .tituloCategoria p {
+        font-size: 2.875rem;
+        font-weight: 400;
+        margin-bottom: 9px;
+        order:-1;
+    }
+
+    .tituloCategoria h3 {
+        display: block;
+        font-size: 1.125rem;
+        font-weight: 300;
+    }
+}

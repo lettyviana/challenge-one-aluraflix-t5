@@ -1,0 +1,12 @@
+.containerDestaque {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+@media screen and (min-device-width: 600px) {
+    .containerDestaque {
+        gap: 50px;
+    }
+}
