@@ -3,6 +3,7 @@ import { BotaoPadrao } from "../../components/BotaoPadrao";
 import { Cabecalho } from "../../components/Cabecalho";
 import { Rodape } from "../../components/Rodape";
 import { Destaque } from "../../components/Destaque";
+import { CarrosselInicio } from "../../components/CarrosselInicio";
 
 export function Inicio() {
   return (
@@ -11,7 +12,7 @@ export function Inicio() {
         <Link to={'/novo-video'}> <BotaoPadrao estilos="novo-video">Novo vídeo</BotaoPadrao></Link>
       </Cabecalho>
       <Destaque/>
-      {/* Renderizar Carrossel Início */}
+      <CarrosselInicio/>
       <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao>
       <Rodape estilos="inicio" />
     </>

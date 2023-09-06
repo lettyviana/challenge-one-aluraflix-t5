@@ -1,3 +1,7 @@
+.tituloCategoria {
+    margin-left: 17px;
+}
+
 .tituloCategoria h2 {
     border-radius: 2px;
     font-size: .75rem;
@@ -32,13 +36,13 @@
     .tituloCategoria {
         display: flex;
         flex-direction: column;
+        margin-left: 40px;
         order: 3;
         width: 100%;
     }
     
     .tituloCategoria h2 {
         font-size: 3.75rem;
-        margin-bottom: 40px;
         order: -1;
     }
 
