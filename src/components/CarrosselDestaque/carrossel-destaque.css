@@ -1,5 +1,4 @@
 .carrossel {
-    gap: 6px;
     margin-left: 17px;
 }
 
@@ -17,7 +16,6 @@
 
 @media screen and (min-device-width: 1280px) {
     .carrossel {
-        gap: 22px;
         margin-left: 40px;
         margin-top: -190px;
     }

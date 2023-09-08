@@ -17,16 +17,17 @@ export const CarrosselInicio = () => {
   const [sliderRef] = useKeenSlider({
     breakpoints: {
       "(min-width: 590px)": {
-        slides: { perView: 2 },
+        slides: { perView: 2, spacing: 5 },
       },
       "(min-width: 1200px)": {
-        slides: { perView: 3 },
+        slides: { perView: 3, spacing: 10 },
       },
       "(min-width: 1920px)": {
-        slides: { perView: 4 },
+        slides: { perView: 4, spacing: 15 },
       },
     },
-    slides: { perView: 1 },
+    slides: { perView: 1, spacing: 5 },
+    mode: "snap",
   });
 
   return (
