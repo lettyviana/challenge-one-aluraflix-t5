@@ -6,6 +6,7 @@ import "./styles/globals.css";
 import { Inicio } from "./pages/Inicio";
 import { NovoVideo } from "./pages/NovoVideo";
 import { NovaCategoria } from "./pages/NovaCategoria";
+import { EditarCategoria } from "./pages/EditarCategoria";
 
 const darkTheme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/novo-video" element={<NovoVideo />} />
           <Route path="/nova-categoria" element={<NovaCategoria />} />
+          <Route path="/editar-categoria" element={<EditarCategoria/>} />
         </Routes>
       </ThemeProvider>
     </>

@@ -1,9 +1,9 @@
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import styles from "./formularioNovaCategoria.module.css";
+import styles from "./formularioEditarCategoria.module.css";
 import { useState } from "react";
 
-export const FormularioNovaCategoria = () => {
+export const FormularioEditarCategoria = () => {
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
     descricaoCategoria: ""
@@ -30,9 +30,9 @@ export const FormularioNovaCategoria = () => {
   
   return (
     <Container maxWidth="xl">
-      <form className={styles.formularioNovaCategoria} onSubmit={enviaFormulario} >
+      <form className={styles.formularioEditarCategoria} onSubmit={enviaFormulario} >
         <Typography variant="h1" align="center">
-          Nova Categoria
+          Editar Categoria
         </Typography>
         <div>
           <TextField

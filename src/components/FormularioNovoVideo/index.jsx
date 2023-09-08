@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Container, MenuItem, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import styles from "./FormularioNovoVideo.module.css";
 import { Link } from "react-router-dom";
 import categoriasData from "../../data/video-data.json";
-import { useState } from "react";
+import styles from "./FormularioNovoVideo.module.css";
 
 export const FormularioNovoVideo = () => {
   const [categoria, setCategoria] = useState("");

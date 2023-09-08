@@ -2,13 +2,11 @@
     display: none;
 }
 
-@media screen and (min-device-width: 920px) {
+@media screen and (min-device-width: 620px) {
     .containerTabela {
         display: block;
         margin-bottom: 163px;
         margin-top: 31px;
-        padding-left: 24px;
-        padding-right: 24px;
         width: 100%;
     }
 
@@ -20,7 +18,7 @@
 
     table th {
         border: 4px solid var(--cor-primaria);
-        font-size: 2.1875rem;
+        font-size: 1.875rem;
         font-weight: 400;
         padding-left: 6px;
         text-align: left;
@@ -32,7 +30,7 @@
     }
 
     table td {
-        font-size: 1.6875rem;
+        font-size: 1.475rem;
         border: 2px solid var(--preto-1);
         padding-left: 6px;
         font-weight: 300;
@@ -48,14 +46,14 @@
         border: none;
         color: var(--cinza-3);
         cursor: pointer;
-        font-size: 1.6875rem;
+        font-size: 1.475rem;
         font-weight: 300;
-        transition: all .4s;
+        transition: all .3s;
     }
 
     .botaoEditar:hover, .botaoExcluir:hover {
         color: var(--cor-primaria);
-        opacity: .8;
+        opacity: .9;
         text-decoration: underline;
         transform: scale(1.05);
     }
@@ -68,5 +66,19 @@
 
     table tr {
         border: 3px solid var(--preto-1);
+    }
+}
+
+@media screen and (min-device-width: 920px) {
+    table th {
+        font-size: 2.1875rem;
+    }
+
+    table td {
+        font-size: 1.6875rem;
+    }
+
+    .botaoEditar, .botaoExcluir {
+        font-size: 1.6875rem;
     }
 }
