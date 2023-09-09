@@ -30,13 +30,6 @@
     width: 25px;
 }
 
-.botao-editar:hover, .botao-excluir:hover {
-    background-color: var(--branco);
-    border-radius: 50%;
-    padding: 2px;
-    transform: scale(1.2);
-}
-
 .card-videos img {
     border: 2px solid;
     border-radius: 4px;
@@ -52,6 +45,13 @@
         cursor: pointer;
     }
 
+    .botao-editar:hover, .botao-excluir:hover {
+        background-color: var(--branco);
+        border-radius: 50%;
+        padding: 2px;
+        transform: scale(1.2);
+    }
+    
     .card-videos img {
         border: 4px solid;
         width: 100%;

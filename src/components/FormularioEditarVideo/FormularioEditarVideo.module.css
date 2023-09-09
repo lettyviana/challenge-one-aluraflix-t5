@@ -1,0 +1,34 @@
+.formularioEditarVideo h1 {
+    color: var(--cinza-3);
+    font-size: 2.1875rem;
+    font-weight: 400;
+    margin: 20px 0 50px;
+    text-align: center;
+}
+
+.containerBotoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 43px;
+    margin-bottom: 148px;
+}
+
+@media screen and (min-device-width: 768px) {
+    .formularioEditarVideo h1 {
+        font-size: 3.75rem;
+        margin: 50px 0 90px;
+    }
+
+    .containerBotoes {
+        justify-content: flex-start;
+        gap: 40px;
+        margin-top: 50px;
+        margin-bottom: 169px;
+    }
+
+    .botaoCategoria {
+        margin: 0 0 0 auto;
+    }
+}

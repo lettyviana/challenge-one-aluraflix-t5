@@ -13,7 +13,7 @@ export function Inicio() {
       </Cabecalho>
       <Destaque/>
       <CarrosselInicio/>
-      <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao>
+      <Link to={'/novo-video'}> <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao></Link>
       <Rodape estilos="inicio" />
     </>
   );
