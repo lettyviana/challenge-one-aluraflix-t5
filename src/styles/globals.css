@@ -5,6 +5,7 @@
   --fonte-secundaria: 'Source Sans 3', sans-serif;
 
   --cor-primaria: #2a7ae4;
+  --cor-primaria-hover-scroll: #539dff;
 
   --categoria-1: #6BD1FF;
   --categoria-2: #9CD33B;
@@ -45,4 +46,28 @@ body {
 
 a {
   text-decoration: none;
+}
+
+@media screen and (min-device-width: 1024px) {
+  /* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--cinza-1); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-primaria-hover-scroll);
+}
+
 }

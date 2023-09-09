@@ -1,3 +1,7 @@
+.formularioNovaCategoria {
+    margin-bottom: 90px;
+}
+
 .formularioNovaCategoria h1 {
     color: var(--cinza-3);
     font-size: 2.1875rem;
@@ -22,5 +26,11 @@
         justify-content: flex-start;
         gap: 40px;
         margin-top: 50px;
+    }
+}
+
+@media screen and (min-device-width: 620px) {
+    .formularioNovaCategoria {
+        margin-bottom: 31px;
     }
 }
