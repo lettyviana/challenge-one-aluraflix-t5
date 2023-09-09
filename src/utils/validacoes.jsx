@@ -28,7 +28,7 @@ export const validaLinkVideo = (urlVideoInserida) => {
 };
 
 export const validarLinkCapa = (url) => {
-  const regex = /^https:\/\/i\.yimg\.com\/vi\/[A-Za-z0-9_-]+$/;
+  const regex = /^(https?:\/\/)?(www\.)?[\w-]+\.\w{2,4}$/;
   return regex.test(url);
 };
 
