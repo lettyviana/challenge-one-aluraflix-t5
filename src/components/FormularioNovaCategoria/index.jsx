@@ -3,60 +3,70 @@ import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import PropTypes from "prop-types";
 import styles from "./formularioNovaCategoria.module.css";
-import { validaDescricaoCategoria, validaNomeCategoria } from "../../utils/validacoes";
+import {
+  validaDescricaoCategoria,
+  validaNomeCategoria,
+} from "../../utils/validacoes";
 
-export const FormularioNovaCategoria = ({aoEnviar}) => {
+export const FormularioNovaCategoria = ({ aoEnviar }) => {
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
-    descricaoCategoria: ""
+    descricaoCategoria: "",
   });
   const [cor, setCor] = useState("#FFFFFF");
   const [erroValorDigitado, setErroValorDigitado] = useState({
     nome: "",
     descricaoCategoria: "",
   });
-  
-  const aoInserirValorDoCampo = e => {
-    const {name, value} = e.target;
+
+  const aoInserirValorDoCampo = (e) => {
+    const { name, value } = e.target;
     setValorDigitado({
       ...valorDigitado,
       [name]: value,
     });
 
-    let erroNome = name === "nome" ? validaNomeCategoria(value) : erroValorDigitado.nome;
-    let erroDescricaoCategoria = name === "descricaoCategoria" ? validaDescricaoCategoria(value) : erroValorDigitado.descricaoCategoria;
+    let erroNome =
+      name === "nome" ? validaNomeCategoria(value) : erroValorDigitado.nome;
+    let erroDescricaoCategoria =
+      name === "descricaoCategoria"
+        ? validaDescricaoCategoria(value)
+        : erroValorDigitado.descricaoCategoria;
 
-    setErroValorDigitado(({
+    setErroValorDigitado({
       nome: erroNome,
       descricaoCategoria: erroDescricaoCategoria,
-    }))
-  }
+    });
+  };
 
-  const aoEscolherACor = e => {
+  const aoEscolherACor = (e) => {
     const novaCor = e.target.value;
     setCor(novaCor);
-  }
+  };
 
   const enviaFormulario = (e) => {
     e.preventDefault();
 
     const erros = {
       nome: validaNomeCategoria(valorDigitado.nome),
-      descricaoCategoria: validaDescricaoCategoria(valorDigitado.descricaoCategoria),
-    }    
+      descricaoCategoria: validaDescricaoCategoria(
+        valorDigitado.descricaoCategoria
+      ),
+    };
 
     setErroValorDigitado(erros);
 
-    if(Object.values(erros).every((erro) => !erro)) {
-
-      aoEnviar({valorDigitado, cor});
+    if (Object.values(erros).every((erro) => !erro)) {
+      aoEnviar({ valorDigitado, cor });
     }
+  };
 
-  }
-  
   return (
     <Container maxWidth="xl">
-      <form className={styles.formularioNovaCategoria} onSubmit={enviaFormulario} >
+      <form
+        className={styles.formularioNovaCategoria}
+        onSubmit={enviaFormulario}
+      >
         <Typography variant="h1" align="center">
           Nova Categoria
         </Typography>
@@ -67,7 +77,7 @@ export const FormularioNovaCategoria = ({aoEnviar}) => {
             onChange={aoInserirValorDoCampo}
             onBlur={(e) => {
               const estaValido = validaNomeCategoria(e.target.value);
-              setErroValorDigitado({nome: estaValido});
+              setErroValorDigitado({ nome: estaValido });
             }}
             label="Nome"
             variant="filled"
@@ -85,7 +95,7 @@ export const FormularioNovaCategoria = ({aoEnviar}) => {
             onChange={aoInserirValorDoCampo}
             onBlur={(e) => {
               const estaValida = validaDescricaoCategoria(e.target.value);
-              setErroValorDigitado({descricaoCategoria: estaValida});
+              setErroValorDigitado({ descricaoCategoria: estaValida });
             }}
             label="Descrição"
             variant="filled"
@@ -124,4 +134,4 @@ export const FormularioNovaCategoria = ({aoEnviar}) => {
 
 FormularioNovaCategoria.propTypes = {
   aoEnviar: PropTypes.any,
-}
+};
