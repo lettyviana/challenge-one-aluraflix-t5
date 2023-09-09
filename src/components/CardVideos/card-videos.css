@@ -1,3 +1,42 @@
+.card-videos {
+    position: relative;
+}
+.acoes {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+    position: absolute;
+    top: 4px;
+}
+
+.botao-editar {
+    align-items: center;
+    color: var(--cor-primaria);
+    display: flex;
+    height: 25px;
+    font-size: 1.2rem;
+    justify-content: center;
+    width: 25px;
+}
+
+.botao-excluir {
+    align-items: center;
+    color: var(--erro-2);
+    display: flex;
+    height: 25px;
+    font-size: 1.2rem;
+    justify-content: center;
+    width: 25px;
+}
+
+.botao-editar:hover, .botao-excluir:hover {
+    background-color: var(--branco);
+    border-radius: 50%;
+    padding: 2px;
+    transform: scale(1.2);
+}
+
 .card-videos img {
     border: 2px solid;
     border-radius: 4px;
@@ -9,6 +48,10 @@
 }
 
 @media screen and (min-device-width: 600px) {
+    .botao-editar, .botao-excluir {
+        cursor: pointer;
+    }
+
     .card-videos img {
         border: 4px solid;
         width: 100%;

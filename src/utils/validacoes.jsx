@@ -27,20 +27,6 @@ export const validaLinkVideo = (urlVideoInserida) => {
   return null;
 };
 
-export const validarLinkCapa = (url) => {
-  const regex = /^(https?:\/\/)?(www\.)?[\w-]+\.\w{2,4}$/;
-  return regex.test(url);
-};
-
-export const validaLinkCapa = (urlCapaInserida) => {
-  const oLinkEstaValido = validarLinkCapa(urlCapaInserida);
-
-  if (!oLinkEstaValido) {
-    return "Insira um link de capa válido.";
-  }
-  return null;
-};
-
 export const validaNomeCategoria = (nome) => {
   if (!nome && nome == "") {
     return "Digite um nome para a categoria.";

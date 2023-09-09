@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { Container, MenuItem, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import { Link } from "react-router-dom";
 import categoriasData from "../../data/video-data.json";
 import PropTypes from "prop-types";
-import styles from "./FormularioNovoVideo.module.css";
+import styles from "./FormularioEditarVideo.module.css";
 import {
   validaDescricao,
   validaLinkVideo,
   validaTitulo,
 } from "../../utils/validacoes";
 
-export const FormularioNovoVideo = ({ aoEnviar }) => {
+export const FormularioEditarVideo = ({ aoEnviar }) => {
   const [valorInserido, setValorInserido] = useState({
     titulo: "",
     linkVideo: "",
@@ -28,28 +27,28 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
 
-      setValorInserido({
-        ...valorInserido,
-        [name]: value,
-      });
+    setValorInserido({
+      ...valorInserido,
+      [name]: value,
+    });
 
-      let erroTitulo =
-        name === "titulo" ? validaTitulo(value) : erroValorInserido.titulo;
-      let erroLinkDoVideo =
-        name === "linkVideo"
-          ? validaLinkVideo(value)
-          : erroValorInserido.linkVideo;
-      
-      let erroDescricao =
-        name === "descricao"
-          ? validaDescricao(value)
-          : erroValorInserido.descricao;
+    let erroTitulo =
+      name === "titulo" ? validaTitulo(value) : erroValorInserido.titulo;
+    let erroLinkDoVideo =
+      name === "linkVideo"
+        ? validaLinkVideo(value)
+        : erroValorInserido.linkVideo;
 
-      setErroValorInserido({
-        titulo: erroTitulo,
-        linkVideo: erroLinkDoVideo,
-        descricao: erroDescricao,
-      });
+    let erroDescricao =
+      name === "descricao"
+        ? validaDescricao(value)
+        : erroValorInserido.descricao;
+
+    setErroValorInserido({
+      titulo: erroTitulo,
+      linkVideo: erroLinkDoVideo,
+      descricao: erroDescricao,
+    });
   };
 
   const aoSelecionarCategoria = (e) => {
@@ -64,9 +63,9 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
 
   return (
     <Container maxWidth="xl">
-      <form className={styles.formularioNovoVideo} onSubmit={enviaFormulario}>
+      <form className={styles.formularioEditarVideo} onSubmit={enviaFormulario}>
         <Typography variant="h1" align="center">
-          Novo Vídeo
+          Editar Vídeo
         </Typography>
         <div>
           <TextField
@@ -142,17 +141,12 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
           <BotaoPadrao tipo="button" estilos="limpar">
             Limpar
           </BotaoPadrao>
-          <Link className={styles.botaoCategoria} to={"/nova-categoria"}>
-            <BotaoPadrao tipo="button" estilos="nova-categoria">
-              Nova Categoria
-            </BotaoPadrao>
-          </Link>
         </div>
       </form>
     </Container>
   );
 };
 
-FormularioNovoVideo.propTypes = {
+FormularioEditarVideo.propTypes = {
   aoEnviar: PropTypes.any,
 };
