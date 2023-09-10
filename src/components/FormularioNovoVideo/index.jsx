@@ -1,11 +1,21 @@
 import { useState } from "react";
-import { Container, MenuItem, TextField, Typography } from "@mui/material";
+import {
+  Container,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import { Link } from "react-router-dom";
 import categoriasData from "../../data/video-data.json";
 import PropTypes from "prop-types";
 import styles from "./FormularioNovoVideo.module.css";
 import {
+  validaCategoriaEscolhida,
   validaDescricao,
   validaLinkVideo,
   validaTitulo,
@@ -24,6 +34,7 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
     linkVideo: "",
     descricao: "",
   });
+  const [erroCategoria, setErroCategoria] = useState(null);
 
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
@@ -53,7 +64,9 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
   };
 
   const aoSelecionarCategoria = (e) => {
-    setCategoria(e.target.value);
+    const categoriaEscolhida = e.target.value;
+    setCategoria(categoriaEscolhida);
+    setErroCategoria(validaCategoriaEscolhida(categoriaEscolhida));
   };
 
   const enviaFormulario = (e) => {
@@ -65,9 +78,12 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
       descricao: validaDescricao(valorInserido.descricao),
     };
 
-    setErroValorInserido(erros);
+    const erroCategoria = validaCategoriaEscolhida(categoria);
 
-    if (Object.values(erros).every((erro) => !erro)) {
+    setErroValorInserido(erros);
+    setErroCategoria(erroCategoria);
+
+    if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
       aoEnviar({ valorInserido, categoria });
     }
   };
@@ -128,26 +144,31 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
             fullWidth
           />
         </div>
-        <div>
-          <TextField
-            required
+        <FormControl fullWidth variant="filled" margin="normal">
+          <InputLabel id="lista-categorias-label">
+            Escolha uma categoria aqui
+          </InputLabel>
+          <Select
+            labelId="lista-categorias-label"
             id="lista-categorias"
             name="listaCategorias"
-            label="Escolha uma categoria aqui"
-            variant="filled"
-            select
-            margin="normal"
-            onChange={aoSelecionarCategoria}
             value={categoria}
-            fullWidth
+            onBlur={(e) => {
+              const categoriaValida = validaCategoriaEscolhida(e.target.value);
+              setErroCategoria(categoriaValida);
+            }}
+            label="Escolha uma categoria aqui"
+            onChange={aoSelecionarCategoria}
+            error={!!erroCategoria}
           >
             {categoriasData.categorias.map((categoria) => (
               <MenuItem key={categoria.id} value={categoria}>
                 {categoria.nome}
               </MenuItem>
             ))}
-          </TextField>
-        </div>
+          </Select>
+          <FormHelperText error>{erroCategoria}</FormHelperText>
+        </FormControl>
         <div>
           <TextField
             required
