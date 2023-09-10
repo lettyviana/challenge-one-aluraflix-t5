@@ -8,6 +8,7 @@ import { NovoVideo } from "./pages/NovoVideo";
 import { NovaCategoria } from "./pages/NovaCategoria";
 import { EditarCategoria } from "./pages/EditarCategoria";
 import { EditarVideo } from "./pages/EditarVideo";
+import { CategoriaProvider } from "./context/CategoriaContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
+        <CategoriaProvider>
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/novo-video" element={<NovoVideo />} />
@@ -27,6 +29,7 @@ function App() {
           <Route path="/editar-categoria" element={<EditarCategoria />} />
           <Route path="/editar-video" element={<EditarVideo />} />
         </Routes>
+        </CategoriaProvider>
       </ThemeProvider>
     </>
   );
