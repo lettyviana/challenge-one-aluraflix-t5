@@ -1,32 +1,62 @@
+import { useState } from "react";
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
+import { validaDescricaoCategoria, validaNomeCategoria } from "../../utils/validacoes";
+import PropTypes from "prop-types";
 import styles from "./formularioEditarCategoria.module.css";
-import { useState } from "react";
 
-export const FormularioEditarCategoria = () => {
+export const FormularioEditarCategoria = ({ aoEnviar }) => {
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
-    descricaoCategoria: ""
+    descricaoCategoria: "",
   });
   const [cor, setCor] = useState("#FFFFFF");
+  const [erroValorDigitado, setErroValorDigitado] = useState({
+    nome: "",
+    descricaoCategoria: "",
+  });
 
-  const aoInserirValorDoCampo = e => {
+  const aoInserirValorDoCampo = (e) => {
+    const { name, value } = e.target;
     setValorDigitado({
       ...valorDigitado,
-      [e.target.name]: e.target.value
-    })
-  }
+      [name]: value,
+    });
 
-  const aoEscolherACor = e => {
+    let erroNome =
+      name === "nome" ? validaNomeCategoria(value) : erroValorDigitado.nome;
+    let erroDescricaoCategoria =
+      name === "descricaoCategoria"
+        ? validaDescricaoCategoria(value)
+        : erroValorDigitado.descricaoCategoria;
+
+    setErroValorDigitado({
+      nome: erroNome,
+      descricaoCategoria: erroDescricaoCategoria,
+    });
+  };
+
+  const aoEscolherACor = (e) => {
     const novaCor = e.target.value;
-    setCor(novaCor)
-  }
+    setCor(novaCor);
+  };
 
   const enviaFormulario = (e) => {
     e.preventDefault();
-    console.log(valorDigitado, cor)
-    // fazer lógica de validação
-  }
+
+    const erros = {
+      nome: validaNomeCategoria(valorDigitado.nome),
+      descricaoCategoria: validaDescricaoCategoria(
+        valorDigitado.descricaoCategoria
+      ),
+    };
+
+    setErroValorDigitado(erros);
+
+    if (Object.values(erros).every((erro) => !erro)) {
+      aoEnviar({ valorDigitado, cor });
+    }
+  };
   
   return (
     <Container maxWidth="xl">
@@ -39,10 +69,16 @@ export const FormularioEditarCategoria = () => {
             id="nome"
             name="nome"
             onChange={aoInserirValorDoCampo}
+            onBlur={(e) => {
+              const estaValido = validaNomeCategoria(e.target.value);
+              setErroValorDigitado({ nome: estaValido });
+            }}
             label="Nome"
             variant="filled"
             type="text"
             margin="normal"
+            error={!!erroValorDigitado.nome}
+            helperText={erroValorDigitado.nome}
             fullWidth
           />
         </div>
@@ -51,12 +87,18 @@ export const FormularioEditarCategoria = () => {
             id="descricao-categoria"
             name="descricaoCategoria"
             onChange={aoInserirValorDoCampo}
+            onBlur={(e) => {
+              const estaValida = validaDescricaoCategoria(e.target.value);
+              setErroValorDigitado({ descricaoCategoria: estaValida });
+            }}
             label="Descrição"
             variant="filled"
             multiline
             rows={5}
             type="text"
             margin="normal"
+            error={!!erroValorDigitado.descricaoCategoria}
+            helperText={erroValorDigitado.descricaoCategoria}
             fullWidth
           />
         </div>
@@ -82,4 +124,8 @@ export const FormularioEditarCategoria = () => {
       </form>
     </Container>
   );
+};
+
+FormularioEditarCategoria.propTypes = {
+  aoEnviar: PropTypes.any,
 };

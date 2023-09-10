@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import PropTypes from "prop-types";
-import styles from "./formularioNovaCategoria.module.css";
 import {
   validaDescricaoCategoria,
   validaNomeCategoria,
 } from "../../utils/validacoes";
+import PropTypes from "prop-types";
+import styles from "./formularioNovaCategoria.module.css";
 
 export const FormularioNovaCategoria = ({ aoEnviar }) => {
   const [valorDigitado, setValorDigitado] = useState({
