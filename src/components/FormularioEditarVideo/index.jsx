@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Container, MenuItem, TextField, Typography } from "@mui/material";
+import { Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import categoriasData from "../../data/video-data.json";
 import PropTypes from "prop-types";
 import styles from "./FormularioEditarVideo.module.css";
 import {
+  validaCategoriaEscolhida,
   validaDescricao,
   validaLinkVideo,
   validaTitulo,
@@ -23,6 +24,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
     linkVideo: "",
     descricao: "",
   });
+  const [erroCategoria, setErroCategoria] = useState(null);
 
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
@@ -52,13 +54,28 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
   };
 
   const aoSelecionarCategoria = (e) => {
-    setCategoria(e.target.value);
+    const categoriaEscolhida = e.target.value;
+    setCategoria(categoriaEscolhida);
+    setErroCategoria(validaCategoriaEscolhida(categoriaEscolhida));
   };
 
   const enviaFormulario = (e) => {
     e.preventDefault();
 
-    aoEnviar({ valorInserido, categoria });
+    const erros = {
+      titulo: validaTitulo(valorInserido.titulo),
+      linkVideo: validaLinkVideo(valorInserido.linkVideo),
+      descricao: validaDescricao(valorInserido.descricao),
+    };
+
+    const erroCategoria = validaCategoriaEscolhida(categoria);
+
+    setErroValorInserido(erros);
+    setErroCategoria(erroCategoria);
+
+    if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
+      aoEnviar({ valorInserido, categoria });
+    }
   };
 
   return (
@@ -68,31 +85,45 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
           Editar Vídeo
         </Typography>
         <div>
-          <TextField
+        <TextField
+            required
             id="titulo"
             name="titulo"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValido = validaTitulo(e.target.value);
+              setErroValorInserido({ titulo: estaValido });
+            }}
             label="Título"
             variant="filled"
             type="text"
             margin="normal"
+            error={!!erroValorInserido.titulo}
+            helperText={erroValorInserido.titulo}
             fullWidth
           />
         </div>
         <div>
-          <TextField
+        <TextField
+            required
             id="link-video"
             name="linkVideo"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValido = validaLinkVideo(e.target.value);
+              setErroValorInserido({ linkVideo: estaValido });
+            }}
             label="Link do vídeo"
             variant="filled"
             type="text"
             margin="normal"
+            error={!!erroValorInserido.linkVideo}
+            helperText={erroValorInserido.linkVideo}
             fullWidth
           />
         </div>
         <div>
-          <TextField
+        <TextField
             id="link-capa"
             name="linkDaCapaDoVideo"
             onChange={aoInserirValor}
@@ -103,36 +134,49 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
             fullWidth
           />
         </div>
-        <div>
-          <TextField
+        <FormControl fullWidth variant="filled" margin="normal">
+          <InputLabel id="lista-categorias-label">
+            Escolha uma categoria aqui
+          </InputLabel>
+          <Select
+            labelId="lista-categorias-label"
             id="lista-categorias"
-            name="lista-categorias"
-            label="Escolha uma categoria"
-            variant="filled"
-            select
-            margin="normal"
-            onChange={aoSelecionarCategoria}
+            name="listaCategorias"
             value={categoria}
-            fullWidth
+            onBlur={(e) => {
+              const categoriaValida = validaCategoriaEscolhida(e.target.value);
+              setErroCategoria(categoriaValida);
+            }}
+            label="Escolha uma categoria aqui"
+            onChange={aoSelecionarCategoria}
+            error={!!erroCategoria}
           >
             {categoriasData.categorias.map((categoria) => (
               <MenuItem key={categoria.id} value={categoria}>
                 {categoria.nome}
               </MenuItem>
             ))}
-          </TextField>
-        </div>
+          </Select>
+          <FormHelperText error>{erroCategoria}</FormHelperText>
+        </FormControl>
         <div>
-          <TextField
+        <TextField
+            required
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValida = validaDescricao(e.target.value);
+              setErroValorInserido({ descricao: estaValida });
+            }}
             label="Descrição"
             variant="filled"
             multiline
             rows={5}
             type="text"
             margin="normal"
+            error={!!erroValorInserido.descricao}
+            helperText={erroValorInserido.descricao}
             fullWidth
           />
         </div>
