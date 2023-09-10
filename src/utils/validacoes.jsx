@@ -43,8 +43,8 @@ export const validaDescricaoCategoria = (descricaoCategoria) => {
   return null;
 };
 
-export const validaCategoriaEscolhida = (listaCategoria) => {
-  if(!listaCategoria) {
+export const validaCategoriaEscolhida = (categoria) => {
+  if(!categoria) {
     return "Escolha uma categoria da lista.";
   }
   return null;
