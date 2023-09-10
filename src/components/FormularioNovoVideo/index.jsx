@@ -192,7 +192,7 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         </div>
         <div className={styles.containerBotoes}>
           <BotaoPadrao tipo="submit">Salvar</BotaoPadrao>
-          <BotaoPadrao tipo="button" estilos="limpar">
+          <BotaoPadrao tipo="reset" estilos="limpar" >
             Limpar
           </BotaoPadrao>
           <Link className={styles.botaoCategoria} to={"/nova-categoria"}>
