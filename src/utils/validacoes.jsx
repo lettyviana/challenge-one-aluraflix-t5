@@ -22,7 +22,7 @@ export const validaLinkVideo = (urlVideoInserida) => {
   const oLinkEstaValido = validarLinkYoutube(urlVideoInserida);
 
   if (!oLinkEstaValido) {
-    return "Insira um link de incorporação do YouTube válido.";
+    return `Insira um link válido. Clique em Compartilhar, escolha a opção incorporar e pegue o trecho de código em src="[link]"`;
   }
   return null;
 };
@@ -42,6 +42,13 @@ export const validaDescricaoCategoria = (descricaoCategoria) => {
   }
   return null;
 };
+
+export const validaCategoriaEscolhida = (listaCategoria) => {
+  if(!listaCategoria) {
+    return "Escolha uma categoria da lista.";
+  }
+  return null;
+}
 
 export const validaForm = (dados) => {
   console.log(dados);

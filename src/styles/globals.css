@@ -48,7 +48,7 @@ a {
   text-decoration: none;
 }
 
-@media screen and (min-device-width: 1024px) {
+@media screen and (min-device-width: 920px) {
   /* width */
 ::-webkit-scrollbar {
   width: 15px;

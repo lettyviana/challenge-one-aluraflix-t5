@@ -28,28 +28,28 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
 
-      setValorInserido({
-        ...valorInserido,
-        [name]: value,
-      });
+    setValorInserido({
+      ...valorInserido,
+      [name]: value,
+    });
 
-      let erroTitulo =
-        name === "titulo" ? validaTitulo(value) : erroValorInserido.titulo;
-      let erroLinkDoVideo =
-        name === "linkVideo"
-          ? validaLinkVideo(value)
-          : erroValorInserido.linkVideo;
-      
-      let erroDescricao =
-        name === "descricao"
-          ? validaDescricao(value)
-          : erroValorInserido.descricao;
+    let erroTitulo =
+      name === "titulo" ? validaTitulo(value) : erroValorInserido.titulo;
+    let erroLinkDoVideo =
+      name === "linkVideo"
+        ? validaLinkVideo(value)
+        : erroValorInserido.linkVideo;
 
-      setErroValorInserido({
-        titulo: erroTitulo,
-        linkVideo: erroLinkDoVideo,
-        descricao: erroDescricao,
-      });
+    let erroDescricao =
+      name === "descricao"
+        ? validaDescricao(value)
+        : erroValorInserido.descricao;
+
+    setErroValorInserido({
+      titulo: erroTitulo,
+      linkVideo: erroLinkDoVideo,
+      descricao: erroDescricao,
+    });
   };
 
   const aoSelecionarCategoria = (e) => {
@@ -59,7 +59,17 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
   const enviaFormulario = (e) => {
     e.preventDefault();
 
-    aoEnviar({ valorInserido, categoria });
+    const erros = {
+      titulo: validaTitulo(valorInserido.titulo),
+      linkVideo: validaLinkVideo(valorInserido.linkVideo),
+      descricao: validaDescricao(valorInserido.descricao),
+    };
+
+    setErroValorInserido(erros);
+
+    if (Object.values(erros).every((erro) => !erro)) {
+      aoEnviar({ valorInserido, categoria });
+    }
   };
 
   return (
@@ -70,25 +80,39 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         </Typography>
         <div>
           <TextField
+            required
             id="titulo"
             name="titulo"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValido = validaTitulo(e.target.value);
+              setErroValorInserido({ titulo: estaValido });
+            }}
             label="Título"
             variant="filled"
             type="text"
             margin="normal"
+            error={!!erroValorInserido.titulo}
+            helperText={erroValorInserido.titulo}
             fullWidth
           />
         </div>
         <div>
           <TextField
+            required
             id="link-video"
             name="linkVideo"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValido = validaLinkVideo(e.target.value);
+              setErroValorInserido({ linkVideo: estaValido });
+            }}
             label="Link do vídeo"
             variant="filled"
             type="text"
             margin="normal"
+            error={!!erroValorInserido.linkVideo}
+            helperText={erroValorInserido.linkVideo}
             fullWidth
           />
         </div>
@@ -106,9 +130,10 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         </div>
         <div>
           <TextField
+            required
             id="lista-categorias"
-            name="lista-categorias"
-            label="Escolha uma categoria"
+            name="listaCategorias"
+            label="Escolha uma categoria aqui"
             variant="filled"
             select
             margin="normal"
@@ -125,15 +150,22 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         </div>
         <div>
           <TextField
+            required
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}
+            onBlur={(e) => {
+              const estaValida = validaDescricao(e.target.value);
+              setErroValorInserido({ descricao: estaValida });
+            }}
             label="Descrição"
             variant="filled"
             multiline
             rows={5}
             type="text"
             margin="normal"
+            error={!!erroValorInserido.descricao}
+            helperText={erroValorInserido.descricao}
             fullWidth
           />
         </div>
