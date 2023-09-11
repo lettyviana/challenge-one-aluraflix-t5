@@ -141,13 +141,6 @@
             "descricaoCategoria": "Formação em Inovação & Gestão da Alura",
             "descricaoTabela": "Conteúdo sobre como manter o time feliz e muito mais motivado",
             "cor": "#9CD33B"
-        },
-        {
-            "id": 9,
-            "nome": "Teste",
-            "descricaoCategoria": "Teste",
-            "descricaoTabela": "Teste",
-            "cor": "#9CD33B"
         }
     ]
 }

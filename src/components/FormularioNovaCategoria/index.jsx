@@ -5,10 +5,9 @@ import {
   validaDescricaoCategoria,
   validaNomeCategoria,
 } from "../../utils/validacoes";
-import PropTypes from "prop-types";
 import styles from "./formularioNovaCategoria.module.css";
 
-export const FormularioNovaCategoria = ({ aoEnviar }) => {
+export const FormularioNovaCategoria = () => {
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
     descricaoCategoria: "",
@@ -44,6 +43,22 @@ export const FormularioNovaCategoria = ({ aoEnviar }) => {
     setCor(novaCor);
   };
 
+  const aoEnviar = ({ valorDigitado, cor }) => {
+    const novaCategoriaCriada = {
+      id: Date.now(),
+      nome: valorDigitado.nome,
+      descricaoTabela: valorDigitado.descricaoCategoria,
+      cor: cor,
+    };
+
+    const categoriasSalvas =
+      JSON.parse(localStorage.getItem("categorias")) || [];
+
+    const categoriasAtualizadas = [...categoriasSalvas, novaCategoriaCriada];
+
+    localStorage.setItem("categorias", JSON.stringify(categoriasAtualizadas));
+  };
+
   const enviaFormulario = (e) => {
     e.preventDefault();
 
@@ -58,6 +73,11 @@ export const FormularioNovaCategoria = ({ aoEnviar }) => {
 
     if (Object.values(erros).every((erro) => !erro)) {
       aoEnviar({ valorDigitado, cor });
+
+      setValorDigitado({
+        nome: "",
+        descricaoCategoria: "",
+      });
     }
   };
 
@@ -130,8 +150,4 @@ export const FormularioNovaCategoria = ({ aoEnviar }) => {
       </form>
     </Container>
   );
-};
-
-FormularioNovaCategoria.propTypes = {
-  aoEnviar: PropTypes.any,
 };

@@ -1,19 +1,10 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "@mui/material";
 import dadosDasCategorias from "../../data/video-data.json";
 import styles from "./TabelaCategorias.module.css";
-import { useCategoriaContext } from "../../context/CategoriaContext";
-
 
 export const TabelaCategorias = () => {
-  const { categorias, excluirCategoria } = useCategoriaContext();
-  
-  useEffect(() => {
-    
-  }, []);
-
-  const todasAsCategorias = [...dadosDasCategorias.categorias, ...categorias]
+    const todasAsCategorias = [...dadosDasCategorias.categorias];
   return (
     <>
       <section className={styles.containerTabela}>
@@ -35,7 +26,7 @@ export const TabelaCategorias = () => {
                     <Link to={"/editar-categoria"} className={styles.botaoEditar}>
                       Editar
                     </Link>
-                    <button type="button" className={styles.botaoExcluir} onClick={() => excluirCategoria(categoria.id)}>
+                    <button type="button" className={styles.botaoExcluir}>
                       Excluir
                     </button>
                   </td>
