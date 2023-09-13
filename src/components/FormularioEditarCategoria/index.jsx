@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import {
@@ -9,7 +11,8 @@ import {
 import PropTypes from "prop-types";
 import styles from "./formularioEditarCategoria.module.css";
 
-export const FormularioEditarCategoria = ({ aoEnviar }) => {
+export const FormularioEditarCategoria = () => {
+  const {categorias, setCategorias} = useCategoriaContext();
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
     descricaoCategoriaTabela: "",
@@ -21,6 +24,9 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
     descricaoCategoriaTabela: "",
     descricaoCategoriaInicio: "",
   });
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const categoriaId = parseInt(id, 10);
 
   const aoInserirValorDoCampo = (e) => {
     const { name, value } = e.target;
@@ -52,6 +58,23 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
     setCor(novaCor);
   };
 
+  const editarCategoria = ({ categoriaId, valorDigitado, cor }) => {
+    const categoriaEditada = {
+      id: categoriaId,
+      nome: valorDigitado.nome,
+      descricaoCategoriaTabela: valorDigitado.descricaoCategoriaTabela,
+      descricaoCategoriaInicio: valorDigitado.descricaoCategoriaInicio,
+      cor: cor,
+    };
+
+    const categoriasAtualizadas = categorias.map((categoria) =>
+    categoria.id === categoriaEditada.id ? categoriaEditada : categoria
+    );
+
+    setCategorias(categoriasAtualizadas);
+    localStorage.setItem("categorias", JSON.stringify(categoriasAtualizadas));
+  };
+
   const enviaFormulario = (e) => {
     e.preventDefault();
 
@@ -67,8 +90,21 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
 
     setErroValorDigitado(erros);
 
+    // const categoriaExistente = categorias.find((categoria) => categoria.id === id);
+
+  //   if(!categoriaExistente) {
+  //     alert("Categoria não encontrada. Redirecionando para a página inicial!");
+  //     setTimeout(() => {
+  //       navigate("/");
+  //     }, 1500);
+  //     return;
+  // }
+
     if (Object.values(erros).every((erro) => !erro)) {
-      aoEnviar({ valorDigitado, cor });
+      editarCategoria({ categoriaId, valorDigitado, cor });
+      setTimeout(() => {
+        navigate("/nova-categoria");
+      }, 1500);
     }
   };
 

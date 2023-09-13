@@ -53,7 +53,7 @@ export const FormularioNovaCategoria = () => {
     setCor(novaCor);
   };
 
-  const aoEnviar = ({ valorDigitado, cor }) => {
+  const adicionaNovaCategoria = ({ valorDigitado, cor }) => {
     const novaCategoriaCriada = {
       id: Date.now(),
       nome: valorDigitado.nome,
@@ -84,7 +84,7 @@ export const FormularioNovaCategoria = () => {
     setErroValorDigitado(erros);
 
     if (Object.values(erros).every((erro) => !erro)) {
-      aoEnviar({ valorDigitado, cor });
+      adicionaNovaCategoria({ valorDigitado, cor });
 
       setValorDigitado({
         nome: "",

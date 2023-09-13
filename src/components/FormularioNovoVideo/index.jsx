@@ -33,7 +33,7 @@ export const FormularioNovoVideo = () => {
   const [categoria, setCategoria] = useState("");
   const [erroValorInserido, setErroValorInserido] = useState({
     titulo: "",
-    linkVideo: ""
+    linkVideo: "",
   });
   const [erroCategoria, setErroCategoria] = useState(null);
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export const FormularioNovoVideo = () => {
 
     setErroValorInserido({
       titulo: erroTitulo,
-      linkVideo: erroLinkDoVideo
+      linkVideo: erroLinkDoVideo,
     });
   };
 
@@ -86,7 +86,7 @@ export const FormularioNovoVideo = () => {
 
     const erros = {
       titulo: validaTitulo(valorInserido.titulo),
-      linkVideo: validaLinkVideo(valorInserido.linkVideo)
+      linkVideo: validaLinkVideo(valorInserido.linkVideo),
     };
 
     const erroCategoria = validaCategoriaEscolhida(categoria);
@@ -97,7 +97,9 @@ export const FormularioNovoVideo = () => {
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
       adicionarNovoVideo({ valorInserido, categoria });
     }
-    navigate('/');
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   };
 
   return (
@@ -186,7 +188,6 @@ export const FormularioNovoVideo = () => {
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}
-            
             label="Descrição"
             variant="filled"
             multiline

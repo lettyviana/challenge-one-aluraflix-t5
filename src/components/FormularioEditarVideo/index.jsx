@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { Container, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { useNovoVideoContext } from "../../context/useNovoVideoContext";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  Container,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
 import categoriasData from "../../data/video-data.json";
 import PropTypes from "prop-types";
@@ -10,7 +21,8 @@ import {
   validaTitulo,
 } from "../../utils/validacoes";
 
-export const FormularioEditarVideo = ({ aoEnviar }) => {
+export const FormularioEditarVideo = () => {
+  const { videos, setVideos } = useNovoVideoContext();
   const [valorInserido, setValorInserido] = useState({
     titulo: "",
     linkVideo: "",
@@ -20,9 +32,12 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
   const [categoria, setCategoria] = useState("");
   const [erroValorInserido, setErroValorInserido] = useState({
     titulo: "",
-    linkVideo: ""
+    linkVideo: "",
   });
   const [erroCategoria, setErroCategoria] = useState(null);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const videoId = parseInt(id, 10);
 
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
@@ -41,7 +56,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
 
     setErroValorInserido({
       titulo: erroTitulo,
-      linkVideo: erroLinkDoVideo
+      linkVideo: erroLinkDoVideo,
     });
   };
 
@@ -51,12 +66,30 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
     setErroCategoria(validaCategoriaEscolhida(categoriaEscolhida));
   };
 
+  const editarVideo = ({ videoId, valorInserido, categoria }) => {
+    const videoEditado = {
+      id: videoId,
+      titulo: valorInserido.titulo,
+      linkVideo: valorInserido.linkVideo,
+      linkDaCapaDoVideo: valorInserido.linkDaCapaDoVideo,
+      descricao: valorInserido.descricao,
+      categoria: categoria.nome,
+    };
+
+    const videosAtualizados = videos.map((video) =>
+      video.id === videoEditado.id ? videoEditado : video
+    );
+
+    setVideos(videosAtualizados);
+    localStorage.setItem("videos", JSON.stringify(videosAtualizados));
+  };
+
   const enviaFormulario = (e) => {
     e.preventDefault();
 
     const erros = {
       titulo: validaTitulo(valorInserido.titulo),
-      linkVideo: validaLinkVideo(valorInserido.linkVideo)
+      linkVideo: validaLinkVideo(valorInserido.linkVideo),
     };
 
     const erroCategoria = validaCategoriaEscolhida(categoria);
@@ -64,8 +97,21 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
     setErroValorInserido(erros);
     setErroCategoria(erroCategoria);
 
+    const videoExistente = videos.find((video) => video.id === videoId);
+
+    if (!videoExistente) {
+      alert("Vídeo não encontrado. Redirecionando para a página inicial!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+      return;
+    }
+
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
-      aoEnviar({ valorInserido, categoria });
+      editarVideo({ videoId, valorInserido, categoria });
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     }
   };
 
@@ -76,7 +122,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
           Editar Vídeo
         </Typography>
         <div>
-        <TextField
+          <TextField
             required
             id="titulo"
             name="titulo"
@@ -95,7 +141,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
           />
         </div>
         <div>
-        <TextField
+          <TextField
             required
             id="link-video"
             name="linkVideo"
@@ -114,7 +160,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
           />
         </div>
         <div>
-        <TextField
+          <TextField
             id="link-capa"
             name="linkDaCapaDoVideo"
             onChange={aoInserirValor}
@@ -151,7 +197,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
           <FormHelperText error>{erroCategoria}</FormHelperText>
         </FormControl>
         <div>
-        <TextField
+          <TextField
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}

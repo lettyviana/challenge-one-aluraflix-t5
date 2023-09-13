@@ -26,8 +26,8 @@ function App() {
               <Route path="/" element={<Inicio />} />
               <Route path="/novo-video" element={<NovoVideo />} />
               <Route path="/nova-categoria" element={<NovaCategoria />} />
-              <Route path="/editar-categoria" element={<EditarCategoria />} />
-              <Route path="/editar-video" element={<EditarVideo />} />
+              <Route path="/editar-categoria/:id" element={<EditarCategoria />} />
+              <Route path="/editar-video/:id" element={<EditarVideo />} />
             </Routes>
           </ThemeProvider>
         </NovoVideoProvider>

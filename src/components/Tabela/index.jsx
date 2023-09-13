@@ -28,7 +28,7 @@ export const TabelaCategorias = () => {
                   <td>{categoria.nome}</td>
                   <td>{categoria.descricaoCategoriaTabela}</td>
                   <td>
-                    <Link to={"/editar-categoria"} className={styles.botaoEditar}>
+                    <Link to={`/editar-categoria/${categoria.id}`} className={styles.botaoEditar}>
                       Editar
                     </Link>
                     <button type="button" className={styles.botaoExcluir} onClick={() => aoExcluirCategoria(categoria.id)}>
