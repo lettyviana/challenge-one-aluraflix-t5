@@ -1,7 +1,16 @@
 .card-videos {
     position: relative;
 }
-.acoes {
+
+.acoes-video-inicio {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 4px;
+}
+
+.acoes-videos {
     align-items: center;
     display: flex;
     gap: 10px;
@@ -12,22 +21,28 @@
 
 .botao-editar {
     align-items: center;
+    background-color: var(--branco);
+    border-radius: 50%;
     color: var(--cor-primaria);
     display: flex;
-    height: 25px;
+    height: 30px;
     font-size: 1.2rem;
     justify-content: center;
-    width: 25px;
+    padding: 4px;
+    width: 30px;
 }
 
 .botao-excluir {
     align-items: center;
+    background-color: var(--branco);
+    border-radius: 50%;
     color: var(--erro-2);
     display: flex;
-    height: 25px;
+    height: 30px;
     font-size: 1.2rem;
     justify-content: center;
-    width: 25px;
+    padding: 4px;
+    width: 30px;
 }
 
 .card-videos img {
@@ -41,6 +56,15 @@
 }
 
 @media screen and (min-device-width: 600px) {
+    .acoes-video-inicio {
+        margin-right: 10px;
+        top: 10px;
+    }
+
+    .acoes-videos {
+        top: 10px;
+    }
+    
     .botao-editar, .botao-excluir {
         cursor: pointer;
     }

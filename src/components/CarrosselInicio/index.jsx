@@ -1,6 +1,6 @@
+import { useKeenSlider } from "keen-slider/react";
 import { useNovoVideoContext } from "../../context/useNovoVideoContext";
 import { useCategoriaContext } from "../../context/useCategoriaContext";
-import { useKeenSlider } from "keen-slider/react";
 import { TituloCategoriaPadrao } from "../TituloCategoriaPadrao";
 import { CardVideos } from "../CardVideos";
 import "keen-slider/keen-slider.min.css";
@@ -28,10 +28,9 @@ export const CarrosselInicio = () => {
 
   const ultimoVideoAdicionado =
     videos.length > 0 ? videos[videos.length - 1] : null;
-
-  const categoriasComVideos = categorias.filter((categoria) => {
+  
+    const categoriasComVideos = categorias.filter((categoria) => {
     return (
-      ultimoVideoAdicionado &&
       categoria.nome !== ultimoVideoAdicionado.categoria &&
       videos.some((video) => video.categoria === categoria.nome)
     );
