@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
+import { useNovoVideoContext } from "../../context/useNovoVideoContext";
 import {
   Container,
   FormControl,
@@ -10,18 +12,18 @@ import {
   Typography,
 } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import { Link } from "react-router-dom";
-import categoriasData from "../../data/video-data.json";
-import PropTypes from "prop-types";
-import styles from "./FormularioNovoVideo.module.css";
+import { Link, useNavigate } from "react-router-dom";
 import {
   validaCategoriaEscolhida,
-  validaDescricao,
   validaLinkVideo,
   validaTitulo,
 } from "../../utils/validacoes";
+import styles from "./FormularioNovoVideo.module.css";
 
-export const FormularioNovoVideo = ({ aoEnviar }) => {
+export const FormularioNovoVideo = () => {
+  const { videos, setVideos } = useNovoVideoContext();
+  const { categorias } = useCategoriaContext();
+
   const [valorInserido, setValorInserido] = useState({
     titulo: "",
     linkVideo: "",
@@ -31,10 +33,10 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
   const [categoria, setCategoria] = useState("");
   const [erroValorInserido, setErroValorInserido] = useState({
     titulo: "",
-    linkVideo: "",
-    descricao: "",
+    linkVideo: ""
   });
   const [erroCategoria, setErroCategoria] = useState(null);
+  const navigate = useNavigate();
 
   const aoInserirValor = (e) => {
     const { name, value } = e.target;
@@ -51,15 +53,9 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         ? validaLinkVideo(value)
         : erroValorInserido.linkVideo;
 
-    let erroDescricao =
-      name === "descricao"
-        ? validaDescricao(value)
-        : erroValorInserido.descricao;
-
     setErroValorInserido({
       titulo: erroTitulo,
-      linkVideo: erroLinkDoVideo,
-      descricao: erroDescricao,
+      linkVideo: erroLinkDoVideo
     });
   };
 
@@ -69,13 +65,28 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
     setErroCategoria(validaCategoriaEscolhida(categoriaEscolhida));
   };
 
+  const adicionarNovoVideo = ({ valorInserido, categoria }) => {
+    const novoVideoCriado = {
+      id: Date.now(),
+      titulo: valorInserido.titulo,
+      linkVideo: valorInserido.linkVideo,
+      linkDaCapaDoVideo: valorInserido.linkDaCapaDoVideo,
+      descricao: valorInserido.descricao,
+      categoria: categoria.nome,
+    };
+
+    const videosAtualizados = [...videos, novoVideoCriado];
+    setVideos(videosAtualizados);
+
+    localStorage.setItem("videos", JSON.stringify(videosAtualizados));
+  };
+
   const enviaFormulario = (e) => {
     e.preventDefault();
 
     const erros = {
       titulo: validaTitulo(valorInserido.titulo),
-      linkVideo: validaLinkVideo(valorInserido.linkVideo),
-      descricao: validaDescricao(valorInserido.descricao),
+      linkVideo: validaLinkVideo(valorInserido.linkVideo)
     };
 
     const erroCategoria = validaCategoriaEscolhida(categoria);
@@ -84,8 +95,9 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
     setErroCategoria(erroCategoria);
 
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
-      aoEnviar({ valorInserido, categoria });
+      adicionarNovoVideo({ valorInserido, categoria });
     }
+    navigate('/');
   };
 
   return (
@@ -161,7 +173,7 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
             onChange={aoSelecionarCategoria}
             error={!!erroCategoria}
           >
-            {categoriasData.categorias.map((categoria) => (
+            {categorias.map((categoria) => (
               <MenuItem key={categoria.id} value={categoria}>
                 {categoria.nome}
               </MenuItem>
@@ -171,28 +183,22 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
         </FormControl>
         <div>
           <TextField
-            required
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}
-            onBlur={(e) => {
-              const estaValida = validaDescricao(e.target.value);
-              setErroValorInserido({ descricao: estaValida });
-            }}
+            
             label="Descrição"
             variant="filled"
             multiline
             rows={5}
             type="text"
             margin="normal"
-            error={!!erroValorInserido.descricao}
-            helperText={erroValorInserido.descricao}
             fullWidth
           />
         </div>
         <div className={styles.containerBotoes}>
           <BotaoPadrao tipo="submit">Salvar</BotaoPadrao>
-          <BotaoPadrao tipo="reset" estilos="limpar" >
+          <BotaoPadrao tipo="reset" estilos="limpar">
             Limpar
           </BotaoPadrao>
           <Link className={styles.botaoCategoria} to={"/nova-categoria"}>
@@ -204,8 +210,4 @@ export const FormularioNovoVideo = ({ aoEnviar }) => {
       </form>
     </Container>
   );
-};
-
-FormularioNovoVideo.propTypes = {
-  aoEnviar: PropTypes.any,
 };

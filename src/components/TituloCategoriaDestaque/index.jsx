@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const TituloCategoriaDestaque = ({
   nomeCategoria,
   tituloVideo,
-  descricao,
+  descricaoCategoriaInicio,
   cor,
 }) => {
   const categoriaStyle = {
@@ -15,7 +15,7 @@ export const TituloCategoriaDestaque = ({
     <div className={styles.tituloCategoria}>
       <h2 style={categoriaStyle}>{nomeCategoria}</h2>
       <h3>{tituloVideo}</h3>
-      <p>{descricao}</p>
+      <p>{descricaoCategoriaInicio}</p>
     </div>
   );
 };
@@ -23,6 +23,6 @@ export const TituloCategoriaDestaque = ({
 TituloCategoriaDestaque.propTypes = {
   nomeCategoria: PropTypes.string,
   tituloVideo: PropTypes.string,
-  descricao: PropTypes.string,
+  descricaoCategoriaInicio: PropTypes.string,
   cor: PropTypes.any,
 };

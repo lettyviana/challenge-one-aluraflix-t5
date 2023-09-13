@@ -1,19 +1,25 @@
 import { useState } from "react";
 import { Container, TextField, Typography } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import { validaDescricaoCategoria, validaNomeCategoria } from "../../utils/validacoes";
+import {
+  validaDescricaoCategoriaTabela,
+  validaDescricaoCategoriaInicio,
+  validaNomeCategoria,
+} from "../../utils/validacoes";
 import PropTypes from "prop-types";
 import styles from "./formularioEditarCategoria.module.css";
 
 export const FormularioEditarCategoria = ({ aoEnviar }) => {
   const [valorDigitado, setValorDigitado] = useState({
     nome: "",
-    descricaoCategoria: "",
+    descricaoCategoriaTabela: "",
+    descricaoCategoriaInicio: "",
   });
   const [cor, setCor] = useState("#FFFFFF");
   const [erroValorDigitado, setErroValorDigitado] = useState({
     nome: "",
-    descricaoCategoria: "",
+    descricaoCategoriaTabela: "",
+    descricaoCategoriaInicio: "",
   });
 
   const aoInserirValorDoCampo = (e) => {
@@ -25,14 +31,19 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
 
     let erroNome =
       name === "nome" ? validaNomeCategoria(value) : erroValorDigitado.nome;
-    let erroDescricaoCategoria =
-      name === "descricaoCategoria"
-        ? validaDescricaoCategoria(value)
-        : erroValorDigitado.descricaoCategoria;
+    let erroDescricaoCategoriaTabela =
+      name === "descricaoCategoriaTabela"
+        ? validaDescricaoCategoriaTabela(value)
+        : erroValorDigitado.descricaoCategoriaTabela;
+    let erroDescricaoCategoriaInicio =
+      name === "descricaoCategoriaInicio"
+        ? validaDescricaoCategoriaInicio(value)
+        : erroValorDigitado.descricaoCategoriaInicio;
 
     setErroValorDigitado({
       nome: erroNome,
-      descricaoCategoria: erroDescricaoCategoria,
+      descricaoCategoriaTabela: erroDescricaoCategoriaTabela,
+      descricaoCategoriaInicio: erroDescricaoCategoriaInicio,
     });
   };
 
@@ -46,8 +57,11 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
 
     const erros = {
       nome: validaNomeCategoria(valorDigitado.nome),
-      descricaoCategoria: validaDescricaoCategoria(
-        valorDigitado.descricaoCategoria
+      descricaoCategoriaTabela: validaDescricaoCategoriaTabela(
+        valorDigitado.descricaoCategoriaTabela
+      ),
+      descricaoCategoriaInicio: validaDescricaoCategoriaInicio(
+        valorDigitado.descricaoCategoriaInicio
       ),
     };
 
@@ -57,10 +71,13 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
       aoEnviar({ valorDigitado, cor });
     }
   };
-  
+
   return (
     <Container maxWidth="xl">
-      <form className={styles.formularioEditarCategoria} onSubmit={enviaFormulario} >
+      <form
+        className={styles.formularioEditarCategoria}
+        onSubmit={enviaFormulario}
+      >
         <Typography variant="h1" align="center">
           Editar Categoria
         </Typography>
@@ -84,21 +101,41 @@ export const FormularioEditarCategoria = ({ aoEnviar }) => {
         </div>
         <div>
           <TextField
-            id="descricao-categoria"
-            name="descricaoCategoria"
+            id="descricao-categoria-tabela"
+            name="descricaoCategoriaTabela"
             onChange={aoInserirValorDoCampo}
             onBlur={(e) => {
-              const estaValida = validaDescricaoCategoria(e.target.value);
-              setErroValorDigitado({ descricaoCategoria: estaValida });
+              const estaValida = validaDescricaoCategoriaTabela(e.target.value);
+              setErroValorDigitado({ descricaoCategoriaTabela: estaValida });
             }}
-            label="Descrição"
+            label="Descrição da Categoria para a Tabela"
             variant="filled"
             multiline
-            rows={5}
+            rows={2}
             type="text"
             margin="normal"
-            error={!!erroValorDigitado.descricaoCategoria}
-            helperText={erroValorDigitado.descricaoCategoria}
+            error={!!erroValorDigitado.descricaoCategoriaTabela}
+            helperText={erroValorDigitado.descricaoCategoriaTabela}
+            fullWidth
+          />
+        </div>
+        <div>
+          <TextField
+            id="descricao-categoria-inicio"
+            name="descricaoCategoriaInicio"
+            onChange={aoInserirValorDoCampo}
+            onBlur={(e) => {
+              const estaValida = validaDescricaoCategoriaInicio(e.target.value);
+              setErroValorDigitado({ descricaoCategoriaInicio: estaValida });
+            }}
+            label="Descrição da Categoria da página inicial"
+            variant="filled"
+            multiline
+            rows={1}
+            type="text"
+            margin="normal"
+            error={!!erroValorDigitado.descricaoCategoriaInicio}
+            helperText={erroValorDigitado.descricaoCategoriaInicio}
             fullWidth
           />
         </div>

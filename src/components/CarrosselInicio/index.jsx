@@ -1,19 +1,12 @@
+import { useNovoVideoContext } from "../../context/useNovoVideoContext";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
 import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-import "./carrossel-inicio.css";
 import { TituloCategoriaPadrao } from "../TituloCategoriaPadrao";
 import { CardVideos } from "../CardVideos";
-import dados from "../../data/video-data.json";
+import "keen-slider/keen-slider.min.css";
+import "./carrossel-inicio.css";
 
 export const CarrosselInicio = () => {
-  const ultimoVideoAdicionado = dados.videos[dados.videos.length - 1];
-  const categoriasComVideos = dados.categorias.filter((categoria) => {
-    return (
-      categoria.nome !== ultimoVideoAdicionado.categoria &&
-      dados.videos.some((video) => video.categoria === categoria.nome)
-    );
-  });
-
   const [sliderRef] = useKeenSlider({
     breakpoints: {
       "(min-width: 590px)": {
@@ -30,6 +23,20 @@ export const CarrosselInicio = () => {
     mode: "snap",
   });
 
+  const { videos } = useNovoVideoContext();
+  const { categorias } = useCategoriaContext();
+
+  const ultimoVideoAdicionado =
+    videos.length > 0 ? videos[videos.length - 1] : null;
+
+  const categoriasComVideos = categorias.filter((categoria) => {
+    return (
+      ultimoVideoAdicionado &&
+      categoria.nome !== ultimoVideoAdicionado.categoria &&
+      videos.some((video) => video.categoria === categoria.nome)
+    );
+  });
+
   return (
     <section>
       <div className="container-inicio">
@@ -37,19 +44,19 @@ export const CarrosselInicio = () => {
           <div className="container-informacoes-inicio" key={categoria.id}>
             <TituloCategoriaPadrao
               nomeCategoria={categoria.nome}
-              descricao={categoria.descricaoCategoria}
+              descricaoCategoriaInicio={categoria.descricaoCategoriaInicio}
               cor={categoria.cor}
             />
             <div ref={sliderRef} className="carrossel-inicio keen-slider">
-              {dados.videos
+              {videos
                 .filter((video) => video.categoria === categoria.nome)
                 .map((video) => (
                   <CardVideos
                     key={video.id}
                     id={video.id}
                     titulo={video.titulo}
-                    capa={video.capa}
-                    link={video.link}
+                    linkDaCapaDoVideo={video.linkDaCapaDoVideo}
+                    link={video.linkVideo}
                     corCategoria={categoria.cor}
                   />
                 ))}

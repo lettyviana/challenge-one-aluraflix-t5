@@ -1,4 +1,5 @@
-// import React from "react"
+import { CategoriaProvider } from "./context/CategoriaContext";
+import { NovoVideoProvider } from "./context/NovoVideoContext";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { Inicio } from "./pages/Inicio";
@@ -17,16 +18,20 @@ const darkTheme = createTheme({
 function App() {
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/novo-video" element={<NovoVideo />} />
-          <Route path="/nova-categoria" element={<NovaCategoria />} />
-          <Route path="/editar-categoria" element={<EditarCategoria />} />
-          <Route path="/editar-video" element={<EditarVideo />} />
-        </Routes>
-      </ThemeProvider>
+      <CategoriaProvider>
+        <NovoVideoProvider>
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <Routes>
+              <Route path="/" element={<Inicio />} />
+              <Route path="/novo-video" element={<NovoVideo />} />
+              <Route path="/nova-categoria" element={<NovaCategoria />} />
+              <Route path="/editar-categoria" element={<EditarCategoria />} />
+              <Route path="/editar-video" element={<EditarVideo />} />
+            </Routes>
+          </ThemeProvider>
+        </NovoVideoProvider>
+      </CategoriaProvider>
     </>
   );
 }

@@ -5,13 +5,6 @@ export const validaTitulo = (titulo) => {
   return null;
 };
 
-export const validaDescricao = (descricao) => {
-  if (!descricao) {
-    return "A descrição é obrigatória.";
-  }
-  return null;
-};
-
 export const validarLinkYoutube = (url) => {
   const youtubeRegex = /^https:\/\/www\.youtube\.com\/embed\/[A-Za-z0-9_-]+$/;
   return youtubeRegex.test(url);
@@ -34,14 +27,22 @@ export const validaNomeCategoria = (nome) => {
   return null;
 };
 
-export const validaDescricaoCategoria = (descricaoCategoria) => {
-  if (!descricaoCategoria) {
-    return "A descrição da categoria é obrigatória.";
-  } else if (descricaoCategoria.length < 3 || descricaoCategoria.length > 70) {
-    return "A descrição deve ter no mínimo 3 caracteres e no máximo 70 caracteres.";
+export const validaDescricaoCategoriaTabela = (descricaoCategoriaTabela) => {
+  if (!descricaoCategoriaTabela) {
+    return "A descrição da categoria para a tabela é obrigatória.";
+  } else if (descricaoCategoriaTabela.length < 3 || descricaoCategoriaTabela.length > 100) {
+    return "A descrição deve ter no mínimo 3 caracteres e no máximo 100 caracteres.";
   }
   return null;
 };
+
+export const validaDescricaoCategoriaInicio = (descricaoCategoriaInicio) => {
+  if(!descricaoCategoriaInicio) {
+    return "Escreva uma breve descrição para a categoria.";
+  }else if (descricaoCategoriaInicio.length <3 || descricaoCategoriaInicio.length > 50) {
+    return "A descrição deve ter no mínimo 3 caracteres e no máximo 50 caracteres";
+  }
+}
 
 export const validaCategoriaEscolhida = (categoria) => {
   if(!categoria) {

@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import styles from "./FormularioEditarVideo.module.css";
 import {
   validaCategoriaEscolhida,
-  validaDescricao,
   validaLinkVideo,
   validaTitulo,
 } from "../../utils/validacoes";
@@ -21,8 +20,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
   const [categoria, setCategoria] = useState("");
   const [erroValorInserido, setErroValorInserido] = useState({
     titulo: "",
-    linkVideo: "",
-    descricao: "",
+    linkVideo: ""
   });
   const [erroCategoria, setErroCategoria] = useState(null);
 
@@ -41,15 +39,9 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
         ? validaLinkVideo(value)
         : erroValorInserido.linkVideo;
 
-    let erroDescricao =
-      name === "descricao"
-        ? validaDescricao(value)
-        : erroValorInserido.descricao;
-
     setErroValorInserido({
       titulo: erroTitulo,
-      linkVideo: erroLinkDoVideo,
-      descricao: erroDescricao,
+      linkVideo: erroLinkDoVideo
     });
   };
 
@@ -64,8 +56,7 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
 
     const erros = {
       titulo: validaTitulo(valorInserido.titulo),
-      linkVideo: validaLinkVideo(valorInserido.linkVideo),
-      descricao: validaDescricao(valorInserido.descricao),
+      linkVideo: validaLinkVideo(valorInserido.linkVideo)
     };
 
     const erroCategoria = validaCategoriaEscolhida(categoria);
@@ -161,22 +152,15 @@ export const FormularioEditarVideo = ({ aoEnviar }) => {
         </FormControl>
         <div>
         <TextField
-            required
             id="descricao"
             name="descricao"
             onChange={aoInserirValor}
-            onBlur={(e) => {
-              const estaValida = validaDescricao(e.target.value);
-              setErroValorInserido({ descricao: estaValida });
-            }}
             label="Descrição"
             variant="filled"
             multiline
             rows={5}
             type="text"
             margin="normal"
-            error={!!erroValorInserido.descricao}
-            helperText={erroValorInserido.descricao}
             fullWidth
           />
         </div>

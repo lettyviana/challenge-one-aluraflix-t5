@@ -1,10 +1,15 @@
+import { useCategoriaContext } from "../../context/useCategoriaContext";
 import { Link } from "react-router-dom";
 import { Container } from "@mui/material";
-import dadosDasCategorias from "../../data/video-data.json";
 import styles from "./TabelaCategorias.module.css";
 
 export const TabelaCategorias = () => {
-    const todasAsCategorias = [...dadosDasCategorias.categorias];
+  const { categorias, excluirCategoria } = useCategoriaContext();
+
+  const aoExcluirCategoria = (categoriaId) => {
+    excluirCategoria(categoriaId);
+  }
+
   return (
     <>
       <section className={styles.containerTabela}>
@@ -18,15 +23,15 @@ export const TabelaCategorias = () => {
               </tr>
             </thead>
             <tbody>
-              {todasAsCategorias.map((categoria) => (
+              {categorias.map((categoria) => (
                 <tr key={categoria.id}>
                   <td>{categoria.nome}</td>
-                  <td>{categoria.descricaoTabela}</td>
+                  <td>{categoria.descricaoCategoriaTabela}</td>
                   <td>
                     <Link to={"/editar-categoria"} className={styles.botaoEditar}>
                       Editar
                     </Link>
-                    <button type="button" className={styles.botaoExcluir}>
+                    <button type="button" className={styles.botaoExcluir} onClick={() => aoExcluirCategoria(categoria.id)}>
                       Excluir
                     </button>
                   </td>

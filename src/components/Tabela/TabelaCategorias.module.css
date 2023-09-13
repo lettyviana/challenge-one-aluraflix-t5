@@ -37,6 +37,9 @@
     }
 
     table td:last-child {
+        border-bottom: none;
+        border-left: none;
+        border-top: none;
         display: flex;
         justify-content: space-around;
     }

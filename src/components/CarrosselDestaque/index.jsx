@@ -2,24 +2,10 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "./carrossel-destaque.css";
 import { CardVideos } from "../CardVideos";
-import dados from "../../data/video-data.json";
+import { useNovoVideoContext } from "../../context/useNovoVideoContext";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
 
 export const CarrosselDestaque = () => {
-  const ultimoVideo = dados.videos[dados.videos.length - 1];
-  const categoriaDoUltimoVideo = ultimoVideo.categoria;
-  const videosCategoriaUltimoVideo = dados.videos.filter(
-    (video) => video.categoria === categoriaDoUltimoVideo
-  );
-  const videosCarrossel = videosCategoriaUltimoVideo.filter(
-    (video) => video.id !== ultimoVideo.id
-  );
-  const categoriaUltimoVideo = dados.categorias.find(
-    (cat) => cat.nome === categoriaDoUltimoVideo
-  );
-  const corCategoriaUltimoVideo = categoriaUltimoVideo
-    ? categoriaUltimoVideo.cor
-    : "";
-
   const [sliderRef] = useKeenSlider({
     breakpoints: {
       "(min-width: 590px)": {
@@ -36,14 +22,32 @@ export const CarrosselDestaque = () => {
     mode: "snap",
   });
 
+  const { videos } = useNovoVideoContext();
+  const { categorias } = useCategoriaContext();
+
+  const ultimoVideo = videos.length > 0 ? videos[videos.length - 1] : null;
+  const categoriaDoUltimoVideo = ultimoVideo ? ultimoVideo.categoria : null;
+  const videosCategoriaUltimoVideo = videos.filter(
+    (video) => video.categoria === categoriaDoUltimoVideo
+  );
+  const videosCarrossel = videosCategoriaUltimoVideo.filter(
+    (video) => video.id !== ultimoVideo.id
+  );
+  const categoriaUltimoVideo = categorias.find(
+    (cat) => cat.nome === categoriaDoUltimoVideo
+  );
+  const corCategoriaUltimoVideo = categoriaUltimoVideo
+    ? categoriaUltimoVideo.cor
+    : "";
+
   return (
     <div ref={sliderRef} className="carrossel keen-slider">
       {videosCarrossel.map((video) => (
         <CardVideos
           id={video.id}
-          capa={video.capa}
+          linkDaCapaDoVideo={video.linkDaCapaDoVideo}
           titulo={video.titulo}
-          link={video.link}
+          link={video.linkVideo}
           corCategoria={corCategoriaUltimoVideo}
           key={video.id}
         />
@@ -51,4 +55,3 @@ export const CarrosselDestaque = () => {
     </div>
   );
 };
-

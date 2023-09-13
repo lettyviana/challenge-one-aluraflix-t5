@@ -1,42 +1,56 @@
+import { useNovoVideoContext } from "../../context/useNovoVideoContext";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
+import { Link } from "react-router-dom";
 import { CarrosselDestaque } from "../CarrosselDestaque";
 import { BotaoPadrao } from "../BotaoPadrao";
-import dados from "../../data/video-data.json";
-import styles from "./ConteudoDestaque.module.css";
 import { CardVideoInicio } from "../CardVideos";
 import { TituloCategoriaDestaque } from "../TituloCategoriaDestaque";
-import { Link } from "react-router-dom";
+import styles from "./ConteudoDestaque.module.css";
 
 export const ConteudoDestaque = () => {
-  const ultimoVideo = dados.videos[dados.videos.length - 1];
-  const categoriaDoUltimoVideo = ultimoVideo.categoria;
-  const categoriaUltimoVideo = dados.categorias.find(
-    (cat) => cat.nome === categoriaDoUltimoVideo
+  const { videos } = useNovoVideoContext();
+  const { categorias } = useCategoriaContext();
+
+  if (videos.length === 0) {
+    return null;
+  }
+
+  const ultimoVideo = videos[videos.length - 1];
+
+  const categoriaUltimoVideo = categorias.find(
+    (cat) => cat.nome === ultimoVideo.categoria
   );
-  const corCategoriaUltimoVideo = categoriaUltimoVideo
-    ? categoriaUltimoVideo.cor
+
+  const nomeCategoria = categoriaUltimoVideo ? categoriaUltimoVideo.nome : "";
+  const descricaoCategoriaInicio = categoriaUltimoVideo
+    ? categoriaUltimoVideo.descricaoCategoriaInicio
     : "";
+  const corCategoria = categoriaUltimoVideo ? categoriaUltimoVideo.cor : "";
+
   return (
     <>
       <section className={styles.containerCategoriaDestaque}>
         <div>
-          <Link to={ultimoVideo.link}>
+          <Link to={ultimoVideo ? ultimoVideo.linkVideo : "/"}>
             <BotaoPadrao tipo="button" estilos="video-inicio-mobile">
               Assistir
             </BotaoPadrao>
           </Link>
           <div className={styles.containerUltimoVideo}>
             <CardVideoInicio
-              id={ultimoVideo.id}
-              capa={ultimoVideo.capa}
-              titulo={ultimoVideo.titulo}
-              link={ultimoVideo.link}
-              corCategoria={corCategoriaUltimoVideo}
+              id={ultimoVideo ? ultimoVideo.id : null}
+              linkDaCapaDoVideo={
+                ultimoVideo ? ultimoVideo.linkDaCapaDoVideo : null
+              }
+              titulo={ultimoVideo ? ultimoVideo.titulo : ""}
+              link={ultimoVideo ? ultimoVideo.linkVideo : ""}
+              corCategoria={corCategoria}
             />
             <TituloCategoriaDestaque
-              nomeCategoria={categoriaDoUltimoVideo}
-              tituloVideo={ultimoVideo.titulo}
-              descricao={categoriaUltimoVideo.descricaoCategoria}
-              cor={corCategoriaUltimoVideo}
+              nomeCategoria={nomeCategoria}
+              tituloVideo={ultimoVideo ? ultimoVideo.titulo : ""}
+              descricaoCategoriaInicio={descricaoCategoriaInicio}
+              cor={corCategoria}
             />
           </div>
           <CarrosselDestaque />
