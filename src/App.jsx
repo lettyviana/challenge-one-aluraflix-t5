@@ -7,6 +7,7 @@ import { NovoVideo } from "./pages/NovoVideo";
 import { NovaCategoria } from "./pages/NovaCategoria";
 import { EditarCategoria } from "./pages/EditarCategoria";
 import { EditarVideo } from "./pages/EditarVideo";
+import { PaginaNaoEncontrada } from "./pages/404";
 import "./styles/globals.css";
 
 const darkTheme = createTheme({
@@ -23,11 +24,12 @@ function App() {
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <Routes>
-              <Route path="/" element={<Inicio />} />
+              <Route path="/" index element={<Inicio />} />
               <Route path="/novo-video" element={<NovoVideo />} />
               <Route path="/nova-categoria" element={<NovaCategoria />} />
               <Route path="/editar-categoria/:id" element={<EditarCategoria />} />
               <Route path="/editar-video/:id" element={<EditarVideo />} />
+              <Route path="*" element={<PaginaNaoEncontrada />} />
             </Routes>
           </ThemeProvider>
         </NovoVideoProvider>
