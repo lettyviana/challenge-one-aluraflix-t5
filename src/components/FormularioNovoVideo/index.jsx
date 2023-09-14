@@ -18,6 +18,7 @@ import {
   validaLinkVideo,
   validaTitulo,
 } from "../../utils/validacoes";
+import capaPadrao from "../../public/sem-imagem-de-capa.png"
 import styles from "./FormularioNovoVideo.module.css";
 
 export const FormularioNovoVideo = () => {
@@ -93,6 +94,10 @@ export const FormularioNovoVideo = () => {
 
     setErroValorInserido(erros);
     setErroCategoria(erroCategoria);
+
+    if(!valorInserido.linkDaCapaDoVideo) {
+      valorInserido.linkDaCapaDoVideo = capaPadrao;
+    }
 
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
       adicionarNovoVideo({ valorInserido, categoria });
