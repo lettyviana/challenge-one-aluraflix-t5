@@ -43,7 +43,7 @@ export const ConteudoDestaque = () => {
                 ultimoVideo ? ultimoVideo.linkDaCapaDoVideo : null
               }
               titulo={ultimoVideo ? ultimoVideo.titulo : ""}
-              link={ultimoVideo ? ultimoVideo.linkVideo : ""}
+              linkVideo={ultimoVideo ? ultimoVideo.linkVideo : ""}
               corCategoria={corCategoria}
             />
             <TituloCategoriaDestaque

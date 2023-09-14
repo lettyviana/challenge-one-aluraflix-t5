@@ -55,7 +55,7 @@ export const CarrosselInicio = () => {
                     id={video.id}
                     titulo={video.titulo}
                     linkDaCapaDoVideo={video.linkDaCapaDoVideo}
-                    link={video.linkVideo}
+                    linkVideo={video.linkVideo}
                     corCategoria={categoria.cor}
                   />
                 ))}

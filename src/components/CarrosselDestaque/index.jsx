@@ -47,7 +47,7 @@ export const CarrosselDestaque = () => {
           id={video.id}
           linkDaCapaDoVideo={video.linkDaCapaDoVideo}
           titulo={video.titulo}
-          link={video.linkVideo}
+          linkVideo={video.linkVideo}
           corCategoria={corCategoriaUltimoVideo}
           key={video.id}
         />
