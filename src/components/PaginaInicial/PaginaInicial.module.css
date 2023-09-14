@@ -1,0 +1,79 @@
+.paginaInicial {
+    align-items: center;
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    max-height: 80vh;
+    padding: 0 5px;
+}
+
+.containerPaginaInicial {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.paginaInicial h2 {
+    color: var(--cor-primaria);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.paginaInicial p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.paginaInicial p a {
+    color: var(--cor-primaria);
+    text-decoration: underline wavy var(--cor-primaria);
+    transition: .5s;
+}
+
+@media screen and (min-device-width: 600px) {
+    .paginaInicial {
+        max-height: 74vh;
+        padding: 0;
+    }
+
+    .containerPaginaInicial {
+        gap: 0;
+    }
+
+    .paginaInicial h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .paginaInicial p {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-device-width: 920px) {
+    .paginaInicial {
+        max-height: 75vh;
+        padding: 0;
+    }
+
+    .containerPaginaInicial {
+        gap: 0;
+    }
+
+    .paginaInicial h2 {
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+    }
+
+    .paginaInicial p {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .paginaInicial p a:hover {
+        color: var(--cor-primaria-hover-scroll);
+        text-decoration: underline wavy var(--cor-primaria-hover-scroll);
+    }
+}
