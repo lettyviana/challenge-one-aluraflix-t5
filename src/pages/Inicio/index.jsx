@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { BotaoPadrao } from "../../components/BotaoPadrao";
-import { Cabecalho } from "../../components/Cabecalho";
-import { Rodape } from "../../components/Rodape";
-import { Destaque } from "../../components/Destaque";
-import { CarrosselInicio } from "../../components/CarrosselInicio";
 import { useNovoVideoContext } from "../../context/useNovoVideoContext";
 import { useCategoriaContext } from "../../context/useCategoriaContext";
+import { Link } from "react-router-dom";
+import { Cabecalho } from "../../components/Cabecalho";
+import { BotaoPadrao } from "../../components/BotaoPadrao";
 import { PaginaInicialZerada } from "../../components/PaginaInicial";
+import { Destaque } from "../../components/Destaque";
+import { CarrosselInicio } from "../../components/CarrosselInicio";
+import { Rodape } from "../../components/Rodape";
 
 export function Inicio() {
   const { videos } = useNovoVideoContext();
