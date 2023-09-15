@@ -7,7 +7,7 @@ import {
   validaDescricaoCategoriaTabela,
   validaNomeCategoria,
 } from "../../utils/validacoes";
-import styles from "./formularioNovaCategoria.module.css";
+import styles from "./FormularioNovaCategoria.module.css";
 
 export const FormularioNovaCategoria = () => {
   const { categorias, setCategorias } = useCategoriaContext();
