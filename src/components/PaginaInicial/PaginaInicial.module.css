@@ -1,9 +1,8 @@
 .paginaInicial {
     align-items: center;
     display: flex;
-    height: 80vh;
+    height: 100vh;
     justify-content: center;
-    max-height: 80vh;
     padding: 0 5px;
 }
 
@@ -30,10 +29,14 @@
     text-decoration: underline wavy var(--cor-primaria);
     transition: .5s;
 }
+    
+.paginaInicial span {
+    color: var(--erro-1);
+    font-size: 1.7rem;
+}
 
 @media screen and (min-device-width: 600px) {
     .paginaInicial {
-        max-height: 74vh;
         padding: 0;
     }
 
@@ -49,6 +52,10 @@
     .paginaInicial p {
         font-size: 1.4rem;
         margin-bottom: 10px;
+    }
+
+    .paginaInicial span {
+        font-size: 2.2rem;
     }
 }
 
@@ -75,5 +82,9 @@
     .paginaInicial p a:hover {
         color: var(--cor-primaria-hover-scroll);
         text-decoration: underline wavy var(--cor-primaria-hover-scroll);
+    }
+
+    .paginaInicial span {
+        font-size: 2.8rem;
     }
 }

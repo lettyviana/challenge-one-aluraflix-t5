@@ -9,9 +9,10 @@ export const PaginaInicialZerada = () => {
           <h2>Boas-vindas ao Aluraflix!</h2>
           <p>Ainda não há vídeos ou categorias cadastrados!</p>
           <p>
-            Para cadastrar um vídeo, primeiro cadastre uma{" "}
-            <Link to={"/nova-categoria"}>categoria</Link>.
+            Para cadastrar um vídeo, primeiro cadastre uma <Link to={"/nova-categoria"}>categoria</Link>.
           </p>
+          <span>Mas atenção!</span>
+          <p>Os vídeos e categorias ficarão salvos no Local Storage do seu navegador.</p>
         </div>
       </div>
     </>
