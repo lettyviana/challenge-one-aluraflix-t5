@@ -6,7 +6,7 @@ export const PaginaInicialZerada = () => {
     <>
       <div className={styles.paginaInicial}>
         <div className={styles.containerPaginaInicial}>
-          <h2>Boas-vindas ao Aluraflix!</h2>
+          <h2>Boas-vindas ao Faz Seu Flix!</h2>
           <p>Ainda não há vídeos ou categorias cadastrados!</p>
           <p>
             Para cadastrar um vídeo, primeiro cadastre uma <Link to={"/nova-categoria"}>categoria</Link>.
