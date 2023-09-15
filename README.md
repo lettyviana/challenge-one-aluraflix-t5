@@ -34,7 +34,7 @@ O objetivo do Aluraflix é ser um Netflix da Alura. Nele você terá sugestões 
 ### **2. Como usar**
 
 1. Alternativa 1:
-    - Acesse por [este link]().<br />
+    - Acesse por [este link](https://faz-seu-flix.vercel.app/).<br />
     - Comece cadastrando uma nova categoria.
     - Depois, cadastre um novo vídeo.
     - Repita o processo conforme for necessário.
