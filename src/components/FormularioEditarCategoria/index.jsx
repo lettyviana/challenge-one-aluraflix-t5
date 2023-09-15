@@ -9,7 +9,7 @@ import {
   validaNomeCategoria,
 } from "../../utils/validacoes";
 import PropTypes from "prop-types";
-import styles from "./formularioEditarCategoria.module.css";
+import styles from "./FormularioEditarCategoria.module.css";
 
 export const FormularioEditarCategoria = () => {
   const {categorias, setCategorias} = useCategoriaContext();
@@ -89,16 +89,6 @@ export const FormularioEditarCategoria = () => {
     };
 
     setErroValorDigitado(erros);
-
-    // const categoriaExistente = categorias.find((categoria) => categoria.id === id);
-
-  //   if(!categoriaExistente) {
-  //     alert("Categoria não encontrada. Redirecionando para a página inicial!");
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     }, 1500);
-  //     return;
-  // }
 
     if (Object.values(erros).every((erro) => !erro)) {
       editarCategoria({ categoriaId, valorDigitado, cor });
