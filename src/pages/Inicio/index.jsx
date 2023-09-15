@@ -19,7 +19,7 @@ export function Inicio() {
           <BotaoPadrao estilos="novo-video">Novo vídeo</BotaoPadrao>
         </Link>
       </Cabecalho>
-      {videos.length === 0 && categorias.length === 0 ? (
+      {videos.length === 0 || categorias.length === 0 ? (
         <PaginaInicialZerada />
       ) : (
         <>
