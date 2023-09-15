@@ -14,15 +14,12 @@
     font-size: 1.125rem;
     font-weight: 300;
     padding-bottom: 20px;
+    text-align: center;
 }
 
 .logotipo {
     height: 28.5px;
     width: 120px;
-}
-
-.negrito {
-    font-weight: 700;
 }
 
 .destaque {
@@ -47,8 +44,12 @@
     .rodape.inicio {
         display: flex;        
     }
-    
-    .rodape p {
-        display: none;
+
+    .destaque a {
+        color: var(--cor-primaria);
+    } 
+
+    .destaque a:hover {
+        color: var(--cor-primaria-hover-scroll);
     }
 }

@@ -1,5 +1,5 @@
 import styles from "./Cabecalho.module.css";
-import logo from "../../public/logo.svg";
+import logo from "../../public/logo.png";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
