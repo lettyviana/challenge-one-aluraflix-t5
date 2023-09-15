@@ -33,7 +33,8 @@
 
 @media screen and (min-device-width: 600px) {
     .rodape {
-        padding-bottom: 60px;
+        gap: 10px;
+        padding-bottom: 0;
     }
 
     .logotipo {
