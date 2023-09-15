@@ -12,17 +12,19 @@ import {
   Typography,
 } from "@mui/material";
 import { BotaoPadrao } from "../BotaoPadrao";
-import categoriasData from "../../data/video-data.json";
 import PropTypes from "prop-types";
-import styles from "./FormularioEditarVideo.module.css";
 import {
   validaCategoriaEscolhida,
   validaLinkVideo,
   validaTitulo,
 } from "../../utils/validacoes";
+import capaPadrao from "../../public/sem-imagem-de-capa.png";
+import styles from "./FormularioEditarVideo.module.css";
+import { useCategoriaContext } from "../../context/useCategoriaContext";
 
 export const FormularioEditarVideo = () => {
   const { videos, setVideos } = useNovoVideoContext();
+  const { categorias } = useCategoriaContext();
   const [valorInserido, setValorInserido] = useState({
     titulo: "",
     linkVideo: "",
@@ -96,6 +98,10 @@ export const FormularioEditarVideo = () => {
 
     setErroValorInserido(erros);
     setErroCategoria(erroCategoria);
+
+    if (!valorInserido.linkDaCapaDoVideo) {
+      valorInserido.linkDaCapaDoVideo = capaPadrao;
+    }
 
     const videoExistente = videos.find((video) => video.id === videoId);
 
@@ -188,7 +194,7 @@ export const FormularioEditarVideo = () => {
             onChange={aoSelecionarCategoria}
             error={!!erroCategoria}
           >
-            {categoriasData.categorias.map((categoria) => (
+            {categorias.map((categoria) => (
               <MenuItem key={categoria.id} value={categoria}>
                 {categoria.nome}
               </MenuItem>
