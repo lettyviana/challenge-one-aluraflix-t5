@@ -6,8 +6,12 @@ export const validaTitulo = (titulo) => {
 };
 
 export const validarLinkYoutube = (url) => {
+  // Remover os parâmetros após o ?si=, se existirem
+  const urlVideo = url.replace(/\?si=.*/, '');
+
+  // Atualizar o regex para aceitar parâmetros
   const youtubeRegex = /^https:\/\/www\.youtube\.com\/embed\/[A-Za-z0-9_-]+$/;
-  return youtubeRegex.test(url);
+  return youtubeRegex.test(urlVideo);
 };
 
 export const validaLinkVideo = (urlVideoInserida) => {
