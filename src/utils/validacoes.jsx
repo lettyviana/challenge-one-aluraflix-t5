@@ -50,7 +50,3 @@ export const validaCategoriaEscolhida = (categoria) => {
   }
   return null;
 }
-
-export const validaForm = (dados) => {
-  console.log(dados);
-};
