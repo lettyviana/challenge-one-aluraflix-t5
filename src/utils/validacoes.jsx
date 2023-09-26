@@ -10,7 +10,7 @@ export const validarLinkYoutube = (url) => {
   const urlVideo = url.replace(/\?si=.*/, '');
 
   // Atualizar o regex para aceitar parâmetros
-  const youtubeRegex = /^https:\/\/www\.youtube\.com\/embed\/[A-Za-z0-9_-]+$/;
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
   return youtubeRegex.test(urlVideo);
 };
 
