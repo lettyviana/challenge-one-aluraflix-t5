@@ -116,6 +116,7 @@ export const FormularioEditarVideo = () => {
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
       editarVideo({ videoId, valorInserido, categoria });
       setTimeout(() => {
+        alert("Vídeo editado com sucesso! Redirecionando para a página inicial!");
         navigate("/");
       }, 1500);
     }

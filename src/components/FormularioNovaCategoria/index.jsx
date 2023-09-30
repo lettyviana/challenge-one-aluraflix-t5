@@ -8,6 +8,7 @@ import {
   validaNomeCategoria,
 } from "../../utils/validacoes";
 import styles from "./FormularioNovaCategoria.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const FormularioNovaCategoria = () => {
   const { categorias, setCategorias } = useCategoriaContext();
@@ -22,6 +23,7 @@ export const FormularioNovaCategoria = () => {
     descricaoCategoriaTabela: "",
     descricaoCategoriaInicio: "",
   });
+  const navigate = useNavigate();
 
   const aoInserirValorDoCampo = (e) => {
     const { name, value } = e.target;
@@ -85,12 +87,10 @@ export const FormularioNovaCategoria = () => {
 
     if (Object.values(erros).every((erro) => !erro)) {
       adicionaNovaCategoria({ valorDigitado, cor });
-
-      setValorDigitado({
-        nome: "",
-        descricaoCategoriaTabela: "",
-        descricaoCategoriaInicio: "",
-      });
+      alert("Categoria cadastrada com sucesso! Redirecionando para Novo Vídeo!");
+      setTimeout(() => {
+        navigate("/novo-video");
+      }, 1000);
     }
   };
 

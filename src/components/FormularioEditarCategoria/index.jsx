@@ -92,6 +92,7 @@ export const FormularioEditarCategoria = () => {
 
     if (Object.values(erros).every((erro) => !erro)) {
       editarCategoria({ categoriaId, valorDigitado, cor });
+      alert("Categoria cadastrada com sucesso! Redirecionando para Nova Categoria!");
       setTimeout(() => {
         navigate("/nova-categoria");
       }, 1500);

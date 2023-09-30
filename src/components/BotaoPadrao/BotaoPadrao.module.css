@@ -15,11 +15,11 @@
     color: var(--preto-1);
 }
 
-.botaoPadrao.novo-video {
+.botaoPadrao.novo-video, .botaoPadrao.nova-categoria {
     display: none;
 }
 
-.botaoPadrao.novo-video-mobile {
+.botaoPadrao.novo-video-mobile, .botaoPadrao.nova-categoria-mobile {
     border-radius: 0;
     height: 54px;
     position: absolute;
@@ -67,8 +67,8 @@
         margin: 0 0 0 auto;
     }
 
-    
-    .botaoPadrao.novo-video-mobile {
+
+    .botaoPadrao.novo-video-mobile, .botaoPadrao.botaoPadrao.nova-categoria-mobile {
         display: none;
     }
 }

@@ -14,10 +14,17 @@ export function Inicio() {
   return (
     <>
       <Cabecalho estilos="inicio">
-        <Link to={"/novo-video"}>
-          {" "}
-          <BotaoPadrao estilos="novo-video">Novo vídeo</BotaoPadrao>
-        </Link>
+        {categorias.length !== 0 ? (
+          <Link to={"/novo-video"}>
+            {" "}
+            <BotaoPadrao estilos="novo-video">Novo vídeo</BotaoPadrao>
+          </Link>
+        ) : (
+          <Link to={"/nova-categoria"}>
+            {" "}
+            <BotaoPadrao estilos="nova-categoria">Nova categoria</BotaoPadrao>
+          </Link>
+        )}
       </Cabecalho>
       {videos.length === 0 || categorias.length === 0 ? (
         <PaginaInicialZerada />
@@ -28,10 +35,19 @@ export function Inicio() {
         </>
       )}
 
-      <Link to={"/novo-video"}>
-        {" "}
-        <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao>
-      </Link>
+      {categorias.length !== 0 ? (
+        <Link to={"/novo-video"}>
+          {" "}
+          <BotaoPadrao estilos="novo-video-mobile">Novo vídeo</BotaoPadrao>
+        </Link>
+      ) : (
+        <Link to={"/nova-categoria"}>
+          {" "}
+          <BotaoPadrao estilos="nova-categoria-mobile">
+            Nova categoria
+          </BotaoPadrao>
+        </Link>
+      )}
       <Rodape estilos="inicio" />
     </>
   );

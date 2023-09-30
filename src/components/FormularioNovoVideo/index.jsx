@@ -102,6 +102,7 @@ export const FormularioNovoVideo = () => {
     if (!erroCategoria && Object.values(erros).every((erro) => !erro)) {
       adicionarNovoVideo({ valorInserido, categoria });
     }
+    alert("Vídeo cadastrado com sucesso! Redirecionando para a página inicial!");
     setTimeout(() => {
       navigate("/");
     }, 1500);

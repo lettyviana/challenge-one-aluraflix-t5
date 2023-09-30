@@ -97,7 +97,8 @@ O objetivo do Aluraflix é ser um Netflix da Alura. Nele você terá sugestões 
 
 ### **6. Status**
 
-- [x] Funcional.
+- [ ] Parcialmente funcional.
+  - [ ] Arrumar edição de categoria;
 - [x] Responsivo.
 - [x] Concluído, porém ainda pode apresentar alguns bugs que eu vou corrigindo conforme for encontrando.
 
