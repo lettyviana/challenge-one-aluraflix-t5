@@ -1,7 +1,7 @@
 .paginaInicial {
     align-items: center;
     display: flex;
-    height: 100vh;
+    height: 80vh;
     justify-content: center;
     padding: 0 5px;
 }

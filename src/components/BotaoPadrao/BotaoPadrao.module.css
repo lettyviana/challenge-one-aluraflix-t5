@@ -21,8 +21,9 @@
 
 .botaoPadrao.novo-video-mobile, .botaoPadrao.nova-categoria-mobile {
     border-radius: 0;
+    bottom: 0;
     height: 54px;
-    position: absolute;
+    position: fixed;
     width: 100%;
 }
 
