@@ -1,9 +1,11 @@
 import styles from "./TituloCategoriaPadrao.module.css";
 import PropTypes from "prop-types";
 
-export const TituloCategoriaPadrao = ({ nomeCategoria, descricaoCategoriaInicio, cor }) => {
+export const TituloCategoriaPadrao = ({ nomeCategoria, descricaoCategoriaInicio, cor,
+  corNomeCategoria }) => {
   const categoriaStyle = {
     backgroundColor: cor,
+    color: corNomeCategoria
   };
 
   return (
@@ -18,4 +20,5 @@ TituloCategoriaPadrao.propTypes = {
   nomeCategoria: PropTypes.any,
   descricaoCategoriaInicio: PropTypes.string,
   cor: PropTypes.any,
+  corNomeCategoria: PropTypes.any
 };

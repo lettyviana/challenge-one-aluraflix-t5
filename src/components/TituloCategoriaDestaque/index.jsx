@@ -6,9 +6,11 @@ export const TituloCategoriaDestaque = ({
   tituloVideo,
   descricaoCategoriaInicio,
   cor,
+  corNomeCategoria
 }) => {
   const categoriaStyle = {
     backgroundColor: cor,
+    color: corNomeCategoria
   };
 
   return (
@@ -25,4 +27,5 @@ TituloCategoriaDestaque.propTypes = {
   tituloVideo: PropTypes.string,
   descricaoCategoriaInicio: PropTypes.string,
   cor: PropTypes.any,
+  corNomeCategoria: PropTypes.any
 };

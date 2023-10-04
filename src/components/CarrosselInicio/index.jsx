@@ -45,6 +45,7 @@ export const CarrosselInicio = () => {
               nomeCategoria={categoria.nome}
               descricaoCategoriaInicio={categoria.descricaoCategoriaInicio}
               cor={categoria.cor}
+              corNomeCategoria={categoria.corNomeCategoria}
             />
             <div ref={sliderRef} className="carrossel-inicio keen-slider">
               {videos

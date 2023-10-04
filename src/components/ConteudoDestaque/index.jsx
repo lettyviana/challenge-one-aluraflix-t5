@@ -26,6 +26,7 @@ export const ConteudoDestaque = () => {
     ? categoriaUltimoVideo.descricaoCategoriaInicio
     : "";
   const corCategoria = categoriaUltimoVideo ? categoriaUltimoVideo.cor : "";
+  const corNomeDaCategoria = categoriaUltimoVideo ? categoriaUltimoVideo.corNomeCategoria : "";
 
   return (
     <>
@@ -51,6 +52,7 @@ export const ConteudoDestaque = () => {
               tituloVideo={ultimoVideo ? ultimoVideo.titulo : ""}
               descricaoCategoriaInicio={descricaoCategoriaInicio}
               cor={corCategoria}
+              corNomeCategoria={corNomeDaCategoria}
             />
           </div>
           <CarrosselDestaque />

@@ -18,6 +18,7 @@ export const FormularioNovaCategoria = () => {
     descricaoCategoriaInicio: "",
   });
   const [cor, setCor] = useState("#FFFFFF");
+  const [corNomeCategoria, setCorNomeCategoria] = useState("#000000");
   const [erroValorDigitado, setErroValorDigitado] = useState({
     nome: "",
     descricaoCategoriaTabela: "",
@@ -50,18 +51,31 @@ export const FormularioNovaCategoria = () => {
     });
   };
 
+  function corEhClara(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+
+    const brilho = (r * 299 + g * 587 + b * 114) / 1000;
+
+    return brilho >= 128;
+  }
+
   const aoEscolherACor = (e) => {
     const novaCor = e.target.value;
+    const corDoNomeDaCategoria = corEhClara(novaCor) ? "#000000" : "#FFFFFF";
     setCor(novaCor);
+    setCorNomeCategoria(corDoNomeDaCategoria);
   };
 
-  const adicionaNovaCategoria = ({ valorDigitado, cor }) => {
+  const adicionaNovaCategoria = ({ valorDigitado, cor, corNomeCategoria }) => {
     const novaCategoriaCriada = {
       id: Date.now(),
       nome: valorDigitado.nome,
       descricaoCategoriaTabela: valorDigitado.descricaoCategoriaTabela,
       descricaoCategoriaInicio: valorDigitado.descricaoCategoriaInicio,
       cor: cor,
+      corNomeCategoria: corNomeCategoria,
     };
 
     const categoriasAtualizadas = [...categorias, novaCategoriaCriada];
@@ -86,8 +100,10 @@ export const FormularioNovaCategoria = () => {
     setErroValorDigitado(erros);
 
     if (Object.values(erros).every((erro) => !erro)) {
-      adicionaNovaCategoria({ valorDigitado, cor });
-      alert("Categoria cadastrada com sucesso! Redirecionando para Novo Vídeo!");
+      adicionaNovaCategoria({ valorDigitado, cor, corNomeCategoria });
+      alert(
+        "Categoria cadastrada com sucesso! Redirecionando para Novo Vídeo!"
+      );
       setTimeout(() => {
         navigate("/novo-video");
       }, 1000);
