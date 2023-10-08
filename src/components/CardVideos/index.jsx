@@ -57,13 +57,20 @@ export const CardVideos = ({
     borderColor: corCategoria,
   };
 
+  const { excluirVideo } = useNovoVideoContext();
+
+  const excluiVideo = (videoId) => {
+    excluirVideo(videoId);
+  };
+
   return (
     <div className="card-videos keen-slider__slide">
       <div className="acoes-videos">
         <Link to={`/editar-video/${id}`} className="botao-editar">
           <BsFillPencilFill />
         </Link>
-        <RiDeleteBin2Fill className="botao-excluir" />
+        <RiDeleteBin2Fill className="botao-excluir" 
+          onClick={() => excluiVideo(id)}/>
       </div>
       <Link to={linkVideo}>
         <img id={id} src={linkDaCapaDoVideo} alt={titulo} style={cardStyle} />
